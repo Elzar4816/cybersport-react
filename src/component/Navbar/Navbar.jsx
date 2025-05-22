@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 
 import HomeIcon from "@mui/icons-material/Home";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
@@ -55,10 +56,10 @@ const Navbar = () => {
           <p style={menuItemStyle}>
             <SportsEsportsIcon fontSize="small" /> Турниры
           </p>
-          <p style={menuItemStyle}>
-            <AnnouncementIcon fontSize="small" /> Новости
-          </p>
-          <p style={menuItemStyle}>
+            <Link to="/news" style={menuItemStyle}>
+                <AnnouncementIcon fontSize="small" /> Новости
+            </Link>
+            <p style={menuItemStyle}>
             <StarIcon fontSize="small" /> Рейтинг
           </p>
           <p style={menuItemStyle}>
