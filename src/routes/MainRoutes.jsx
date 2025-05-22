@@ -4,14 +4,20 @@ import HomePage from "../pages/HomePage";
 import { Route, Routes } from "react-router-dom";
 import NewsPage from "../pages/NewsPage";
 import PressLoginPage from "../pages/PressLoginPage";
+import PressPanelPage from "../pages/PressPanelPage";
+import ProtectedRoute from "../component/ProtectedRoute";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
     {link: "/", element: <HomePage />, id: 1,},
     {link: "/tournament", element: <TournamentPage />, id: 2,},
     {link: "/news", element: <NewsPage />, id: 3,},
-    {link: "/press-login", element: <PressLoginPage />, id: 4,}
-
+    {link: "/press-login", element: <PressLoginPage />, id: 4,},
+    {link: "/press-panel", element: (
+          <ProtectedRoute>
+            <PressPanelPage />
+          </ProtectedRoute>
+      ), id: 5,}
   ];
   return (
     <Routes>
