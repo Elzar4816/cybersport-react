@@ -10,7 +10,7 @@ import {
   Phone,
   Room,
 } from "@mui/icons-material";
-import Logo from "../../assets/logoKCF.png"; // Используй логотип своей федерации
+import Logo from "../../assets/logoKCF.png";
 
 const Footer = () => {
   return (
@@ -20,30 +20,33 @@ const Footer = () => {
         color: "white",
         pt: 4,
         pb: 2,
-        px: { xs: 2, md: 10 },
+        px: { xs: 2, sm: 4, md: 10 },
       }}
     >
-      {/* Верхняя часть с логотипом и соцсетями */}
+      {/* Верхняя часть: логотип и соцсети */}
       <Grid
         container
-        spacing={4}
+        spacing={2}
         alignItems="center"
         justifyContent="space-between"
+        sx={{ flexDirection: { xs: "column", md: "row" } }}
       >
         <Grid
           item
           xs={12}
           md={6}
-          sx={{ textAlign: { xs: "center", md: "left" }, width: "33%" }}
+          sx={{
+            textAlign: { xs: "center", md: "left" },
+            mb: { xs: 2, md: 0 },
+            width: { xs: "100%", md: "33%" },
+          }}
         >
           <Box
             sx={{
-              height: 80, // высота видимой части
-              overflow: "hidden",
+              height: { xs: 60, sm: 70, md: 170 },
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              mb: 2,
             }}
           >
             <Box
@@ -51,39 +54,46 @@ const Footer = () => {
               src={Logo}
               alt="KCF Logo"
               sx={{
-                height: "250px", // картинка чуть выше, чем контейнер, чтобы "обрезать"
-                objectFit: "cover",
+                height: { xs: 170, sm: 170, md: 170 },
+                objectFit: "contain",
               }}
             />
           </Box>
         </Grid>
+
         <Grid
           item
           xs={12}
           md={6}
-          sx={{ textAlign: { xs: "center", md: "right" } }}
+          sx={{
+            textAlign: { xs: "center", md: "right" },
+            width: { xs: "100%", md: "auto" },
+          }}
         >
           <Box
             sx={{
               display: "flex",
               justifyContent: { xs: "center", md: "flex-end" },
-              gap: 5,
+              gap: 3,
+              flexWrap: "wrap",
+              maxWidth: { xs: 250, md: "none" },
+              mx: "auto",
             }}
           >
-            <Link href="#" color="inherit">
-              <Facebook />
+            <Link href="#" color="inherit" aria-label="Facebook">
+              <Facebook fontSize="medium" />
             </Link>
-            <Link href="#" color="inherit">
-              <Twitter />
+            <Link href="#" color="inherit" aria-label="Twitter">
+              <Twitter fontSize="medium" />
             </Link>
-            <Link href="#" color="inherit">
-              <Instagram />
+            <Link href="#" color="inherit" aria-label="Instagram">
+              <Instagram fontSize="medium" />
             </Link>
-            <Link href="#" color="inherit">
-              <YouTube />
+            <Link href="#" color="inherit" aria-label="YouTube">
+              <YouTube fontSize="medium" />
             </Link>
-            <Link href="#" color="inherit">
-              <Telegram />
+            <Link href="#" color="inherit" aria-label="Telegram">
+              <Telegram fontSize="medium" />
             </Link>
           </Box>
         </Grid>
@@ -95,34 +105,42 @@ const Footer = () => {
       <Box
         sx={{
           display: "flex",
+          flexDirection: { xs: "column", sm: "row" },
           flexWrap: "wrap",
           justifyContent: "center",
-          gap: 3,
+          gap: 2,
           mb: 3,
+          textAlign: "center",
         }}
       >
-        <Link href="#" color="inherit" underline="none">
-          О федерации
-        </Link>
-        <Link href="#" color="inherit" underline="none">
-          Турниры
-        </Link>
-        <Link href="#" color="inherit" underline="none">
-          Партнеры
-        </Link>
-        <Link href="#" color="inherit" underline="none">
-          Пресс-центр
-        </Link>
-        <Link href="#" color="inherit" underline="none">
-          Проекты
-        </Link>
-        <Link href="#" color="inherit" underline="none">
-          Контакты
-        </Link>
+        {[
+          "О федерации",
+          "Турниры",
+          "Партнеры",
+          "Пресс-центр",
+          "Проекты",
+          "Контакты",
+        ].map((text) => (
+          <Link
+            key={text}
+            href="#"
+            color="inherit"
+            underline="none"
+            sx={{ px: 1, py: 0.5, fontSize: "1rem" }}
+          >
+            {text}
+          </Link>
+        ))}
       </Box>
 
       {/* Контактная информация */}
-      <Grid container spacing={4} justifyContent="center" textAlign="center">
+      <Grid
+        container
+        spacing={2}
+        justifyContent="center"
+        textAlign="center"
+        sx={{ flexDirection: { xs: "column", md: "row" } }}
+      >
         <Grid item xs={12} md={4}>
           <Box
             sx={{
@@ -130,10 +148,13 @@ const Footer = () => {
               justifyContent: "center",
               alignItems: "center",
               gap: 1,
+              px: 1,
             }}
           >
             <Room fontSize="small" />
-            <Typography>г. Бишкек, ул. Абдрахманова, офис 42</Typography>
+            <Typography variant="body2">
+              г. Бишкек, ул. Абдрахманова, офис 42
+            </Typography>
           </Box>
         </Grid>
         <Grid item xs={12} md={4}>
@@ -143,10 +164,11 @@ const Footer = () => {
               justifyContent: "center",
               alignItems: "center",
               gap: 1,
+              px: 1,
             }}
           >
             <Phone fontSize="small" />
-            <Typography>+996 312 123 456</Typography>
+            <Typography variant="body2">+996 312 123 456</Typography>
           </Box>
         </Grid>
         <Grid item xs={12} md={4}>
@@ -156,17 +178,24 @@ const Footer = () => {
               justifyContent: "center",
               alignItems: "center",
               gap: 1,
+              px: 1,
             }}
           >
             <Email fontSize="small" />
-            <Typography>info@kcf.kg</Typography>
+            <Typography variant="body2">info@kcf.kg</Typography>
           </Box>
         </Grid>
       </Grid>
 
       {/* Нижняя строка */}
       <Box
-        sx={{ mt: 4, textAlign: "center", fontSize: "0.875rem", color: "#aaa" }}
+        sx={{
+          mt: 4,
+          textAlign: "center",
+          fontSize: "0.875rem",
+          color: "#aaa",
+          px: 1,
+        }}
       >
         © {new Date().getFullYear()} Kyrgyz Cybersport Federation
       </Box>

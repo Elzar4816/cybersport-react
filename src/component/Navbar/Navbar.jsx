@@ -1,14 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import "./Navbar.css";
 import logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 
 import HomeIcon from "@mui/icons-material/Home";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import AnnouncementIcon from "@mui/icons-material/Announcement";
 import StarIcon from "@mui/icons-material/Star";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
-import SearchIcon from "@mui/icons-material/Search";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
+import InfoIcon from "@mui/icons-material/Info";
+const menuItems = [
+  { label: "Главная", icon: <HomeIcon fontSize="small" />, path: "/" },
+  {
+    label: "Турниры",
+    icon: <SportsEsportsIcon fontSize="small" />,
+    path: "/tournaments",
+  },
+  { label: "Новости", icon: <AnnouncementIcon fontSize="small" />, path: "/" },
+  { label: "Рейтинг", icon: <StarIcon fontSize="small" />, path: "/" },
+  { label: "О нас", icon: <InfoIcon fontSize="small" />, path: "/" },
+  { label: "Контакты", icon: <ContactMailIcon fontSize="small" />, path: "/" },
+];
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div
       style={{
@@ -27,97 +45,77 @@ const Navbar = () => {
           width: "90%",
           display: "flex",
           alignItems: "center",
+          justifyContent: "space-between",
           marginTop: "20px",
           backgroundColor: "rgba(34, 34, 34, 0.7)",
           borderRadius: "10px",
           padding: "10px 20px",
+          flexWrap: "wrap",
         }}
       >
-        {/* Логотип */}
         <img
           src={logo}
           alt="Logo"
-          style={{ height: "60px", marginRight: "30px" }}
+          style={{ height: "60px", marginRight: "20px" }}
         />
 
-        {/* Меню */}
-        <div
-          style={{
-            display: "flex",
-            gap: "30px",
-            flexGrow: 1,
-            justifyContent: "center",
-          }}
-        >
-          <p style={menuItemStyle}>
-            <HomeIcon fontSize="small" /> Главная
-          </p>
-          <p style={menuItemStyle}>
-            <SportsEsportsIcon fontSize="small" /> Турниры
-          </p>
-          <p style={menuItemStyle}>
-            <AnnouncementIcon fontSize="small" /> Новости
-          </p>
-          <p style={menuItemStyle}>
-            <StarIcon fontSize="small" /> Рейтинг
-          </p>
-          <p style={menuItemStyle}>
-            <ContactMailIcon fontSize="small" /> Контакты
-          </p>
+        {/* Меню — desktop */}
+        <div className="menu-desktop">
+          {menuItems.map((item, idx) => (
+            <Link key={idx} to={item.path} style={{ textDecoration: "none" }}>
+              <p style={menuItemStyle}>
+                {item.icon} {item.label}
+              </p>
+            </Link>
+          ))}
         </div>
 
-        {/* Поиск и Войти */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "15px",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              backgroundColor: "rgba(255, 255, 255, 0.1)",
-              borderRadius: "5px",
-              padding: "4px 8px",
-              color: "white",
-            }}
-          >
-            <SearchIcon fontSize="small" />
-            <input
-              type="text"
-              placeholder="Поиск..."
-              style={{
-                background: "transparent",
-                border: "none",
-                outline: "none",
-                color: "white",
-                marginLeft: "5px",
-              }}
-            />
-          </div>
-
+        {/* Иконка бургер-меню */}
+        <div className="menu-mobile-icon">
           <button
+            onClick={() => setMenuOpen(!menuOpen)}
             style={{
-              backgroundColor: "#00AEEF",
+              background: "transparent",
               border: "none",
               color: "white",
-              padding: "8px 16px",
-              borderRadius: "5px",
+              fontSize: "28px",
               cursor: "pointer",
-              fontWeight: "bold",
             }}
           >
-            Войти
+            {menuOpen ? <CloseIcon /> : <MenuIcon fontSize="large" />}
           </button>
         </div>
+      </div>
+
+      {/* Боковое меню */}
+      <div className={`side-menu ${menuOpen ? "open" : "closed"}`}>
+        <div style={{ alignSelf: "flex-end" }}>
+          <button
+            onClick={() => setMenuOpen(false)}
+            style={{
+              background: "transparent",
+              border: "none",
+              color: "white",
+              fontSize: "28px",
+              cursor: "pointer",
+            }}
+          >
+            <CloseIcon />
+          </button>
+        </div>
+
+        {menuItems.map((item, idx) => (
+          <Link key={idx} to={item.path} style={{ textDecoration: "none" }}>
+            <p style={{ ...menuItemStyle, fontSize: "16px" }}>
+              {item.icon} {item.label}
+            </p>
+          </Link>
+        ))}
       </div>
     </div>
   );
 };
 
-// Стили для пунктов меню
 const menuItemStyle = {
   color: "white",
   display: "flex",

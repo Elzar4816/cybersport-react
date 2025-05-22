@@ -1,12 +1,9 @@
+// src/pages/TournamentsPage.jsx
 import React from "react";
 import Tournament from "../component/Tournament/Tournament";
 
-const TournamentPage = () => {
-  return (
-    <div>
-      <Tournament />
-    </div>
-  );
+const TournamentsPage = () => {
+  return <Tournament />;
 };
 
-export default TournamentPage;
+export default TournamentsPage;

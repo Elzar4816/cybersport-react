@@ -11,7 +11,7 @@ const MainRoutes = () => {
       id: 1,
     },
     {
-      link: "/tournament",
+      link: "/tournaments",
       element: <TournamentPage />,
       id: 2,
     },
