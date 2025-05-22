@@ -27,7 +27,7 @@ const Hero = () => {
         sx={{
           mt: { xs: "120px", md: "75px" },
           display: "flex",
-          flexDirection: "row",
+          flexDirection: { xs: "column", md: "row" },
           justifyContent: "space-between",
           alignItems: "center",
           maxWidth: "1200px",
@@ -113,6 +113,7 @@ const Hero = () => {
             maxHeight: { xs: "300px", md: "68vh" },
             width: "100%",
             height: "auto",
+            mt: { xs: 4, md: 0 },
           }}
         />
       </Box>

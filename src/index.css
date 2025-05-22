@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap");
+
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
@@ -12,4 +14,15 @@ code {
 body {
   background: rgb(2, 2, 2);
   background: #171515;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

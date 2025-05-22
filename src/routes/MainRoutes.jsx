@@ -10,7 +10,7 @@ import ProtectedRoute from "../component/ProtectedRoute";
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
     {link: "/", element: <HomePage />, id: 1,},
-    {link: "/tournament", element: <TournamentPage />, id: 2,},
+    {link: "/tournaments", element: <TournamentPage />, id: 2,},
     {link: "/news", element: <NewsPage />, id: 3,},
     {link: "/press-login", element: <PressLoginPage />, id: 4,},
     {link: "/press-panel", element: (
