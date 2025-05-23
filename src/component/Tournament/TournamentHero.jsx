@@ -6,202 +6,193 @@ import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import GroupIcon from "@mui/icons-material/Group";
 import { motion } from "framer-motion";
 import NumberCounter from "number-counter";
-
+import bannerImg from "../../assets/banner.png";
 import tournament_overlay from "../../assets/tournament_overlay.jpg";
 
 const transition = { type: "spring", duration: 3 };
 
 const TournamentHero = () => {
   return (
-    <Box
-      sx={{
-        mt: "102px",
-        px: 4,
-        py: 8,
-        color: "white",
-        borderRadius: "12px",
-        overflow: "hidden",
-        position: "relative",
-      }}
-    >
+    <div>
+      <div>
+        <div
+          style={{
+            textAlign: "center",
+            width: "100%",
+            height: "80px",
+            backgroundColor: "#222223",
+            fontSize: "18px",
+            color: "#a3a3a3",
+            fontWeight: "500",
+            letterSpacing: "2px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            boxShadow: "inset 7px 0 9px -7px rgba(0,0,0,.5)",
+
+            marginTop: "104px",
+          }}
+        >
+          Кыргызская Киберспортивная Федерация
+        </div>
+        <Box
+          sx={{
+            width: "100%",
+            overflowX: "hidden",
+            height: "100vh",
+            backgroundImage: `url(${bannerImg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "white",
+            textShadow: "0 4px 12px rgba(0,0,0,0.6)",
+            textAlign: "center",
+            px: 2,
+          }}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2 }}
+            style={{ fontSize: "40px", fontWeight: "bold" }}
+          >
+            Кыргызская Киберспортивная Федерация
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.3 }}
+            style={{
+              fontSize: "20px",
+              marginTop: "16px",
+              maxWidth: "700px",
+            }}
+          >
+            Мы двигаем киберспорт вперёд, объединяя игроков, команды и
+            поклонников по всей стране!
+          </motion.div>
+        </Box>
+      </div>
+      {/* Контент и анимация */}
       <Box
         sx={{
+          mt: "0px",
+          px: 4,
+          py: 8,
+          color: "white",
+          borderRadius: "12px",
+          overflow: "hidden",
+          position: "relative",
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          justifyContent: "space-between",
-          alignItems: "stretch",
-          gap: 6,
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center",
         }}
       >
-        {/* Левая часть */}
-        <Box sx={{ flex: 1, position: "relative" }}>
-          {/* Блик/фон */}
-          <Box
+        {/* Текстовый контент */}
+        <Box
+          sx={{
+            maxWidth: "800px",
+            width: "100%",
+            mb: 6,
+            overflowWrap: "break-word", // предотвращает вылет текста
+            wordBreak: "break-word", // дополнительная защита
+          }}
+        >
+          <Typography
+            variant="h3"
             sx={{
-              position: "absolute",
-              top: 0,
-              left: -50,
-              width: 200,
-              height: 200,
-              bgcolor: "#fe7700",
-              borderRadius: "50%",
-              opacity: 0.1,
-              zIndex: 0,
+              fontWeight: "bold",
+              mb: 2,
+              animation: "fadeIn 1s ease forwards",
+              fontSize: {
+                xs: "1.5rem", // <600px
+                sm: "2rem", // ≥600px
+                md: "2.5rem", // ≥900px
+              },
             }}
-          />
-          <Box
+          >
+            Киберспортивные Турниры
+          </Typography>
+          <Typography
             sx={{
-              position: "absolute",
-              top: 250,
-              left: 500,
-              width: 200,
-              height: 200,
-              bgcolor: "#fe7700",
-              borderRadius: "50%",
-              opacity: 0.1,
-              zIndex: 0,
+              mb: 4,
+              animation: "fadeIn 1s ease forwards",
             }}
-          />
-
-          {/* Контент */}
-          <Box sx={{ position: "relative", zIndex: 1 }}>
-            <Typography
-              variant="h3"
-              sx={{
-                fontWeight: "bold",
-                mb: 2,
-
-                animation: "fadeIn 1s ease forwards",
-              }}
-            >
-              Киберспортивные Турниры
-            </Typography>
-            <Typography
-              sx={{
-                mb: 4,
-                maxWidth: "675px",
-                textAlign: "left",
-
-                animation: "fadeIn 1s ease forwards",
-              }}
-            >
-              Киберспортивные турниры — одно из приоритетных направлений
-              <span style={{ color: "#ac5864" }}>
-                {" "}
-                Кыргызской Федерации Киберспорта
-              </span>
-              . На нашей платформе вы найдете всю актуальную информацию о самых
-              значимых событиях и их особенностях.{" "}
-            </Typography>
-            <Typography
-              sx={{
-                mb: 4,
-                maxWidth: "675px",
-                textAlign: "left",
-
-                animation: "fadeIn 1s ease forwards",
-              }}
-            >
-              Федерация организует и освещает чемпионаты по таким дисциплинам,
-              как Dota 2, Counter-Strike 2, Mobile Legends, League of Legends,
-              Deadlock и другим популярным играм. Участие в турнирах открывает
-              геймерам путь к профессиональному росту, а зрители получают
-              захватывающие эмоции, наблюдая за сражениями лучших игроков
-              страны. Активное развитие киберспортивной сцены способствует росту
-              сообщества комментаторов, стримеров и аналитиков, объединяя всех,
-              кто живёт игрой.
-            </Typography>
-          </Box>
+          >
+            Киберспортивные турниры — одно из приоритетных направлений{" "}
+            <span style={{ color: "#ac5864" }}>
+              Кыргызской Федерации Киберспорта
+            </span>
+            . На нашей платформе вы найдете всю актуальную информацию о самых
+            значимых событиях и их особенностях.
+          </Typography>
         </Box>
 
-        {/* Правая часть */}
-        <Box sx={{ flex: 1, position: "relative", minHeight: "350px" }}>
-          {/* Фон и overlay */}
-          <Box
-            sx={{
-              position: "absolute",
-              inset: 0,
-              zIndex: 0,
-              pointerEvents: "none",
-            }}
+        {/* Анимационные блоки */}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 3,
+            flexWrap: "wrap",
+          }}
+        >
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={transition}
+            style={infoBoxStyle}
           >
-            <motion.img
-              src={tournament_overlay}
-              alt="tournament-overlay"
-              initial={{ right: "11rem", opacity: 0 }}
-              whileInView={{ right: "0rem", opacity: 0.4 }}
-              transition={transition}
-              style={{
-                position: "absolute",
-                right: 0,
-                width: "100%",
-              }}
-            />
-          </Box>
+            <WhatshotIcon sx={iconStyle} />
+            <div>
+              <span style={labelStyle}>Текущие турниры</span>
+              <div style={counterStyle}>
+                <NumberCounter start={0} end={3} delay="2" />
+                <span>активных</span>
+              </div>
+            </div>
+          </motion.div>
 
-          {/* Анимационные блоки */}
-          <Box
-            sx={{
-              position: "absolute",
-              bottom: "0px", // отступ снизу внутри картинки — можешь подкорректировать
-              left: "0",
-              right: "0",
-              display: "flex",
-              justifyContent: "center", // выравнивание по центру по горизонтали
-              gap: 3,
-              zIndex: 1,
-            }}
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ ...transition, delay: 0.5 }}
+            style={infoBoxStyle}
           >
-            <motion.div
-              initial={{ x: 50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={transition}
-              style={infoBoxStyle}
-            >
-              <WhatshotIcon sx={iconStyle} />
-              <div>
-                <span style={labelStyle}>Текущие турниры</span>
-                <div style={counterStyle}>
-                  <NumberCounter start={0} end={3} delay="2" />
-                  <span>активных</span>
-                </div>
+            <EmojiEventsIcon sx={iconStyle} />
+            <div>
+              <span style={labelStyle}>Завершено турниров</span>
+              <div style={numberOnlyStyle}>
+                <NumberCounter start={0} end={12} delay="2" />
               </div>
-            </motion.div>
+            </div>
+          </motion.div>
 
-            <motion.div
-              initial={{ x: 50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{ ...transition, delay: 0.5 }}
-              style={infoBoxStyle}
-            >
-              <EmojiEventsIcon sx={iconStyle} />
-              <div>
-                <span style={labelStyle}>Завершено турниров</span>
-                <div style={numberOnlyStyle}>
-                  <NumberCounter start={0} end={12} delay="2" />
-                </div>
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ ...transition, delay: 1 }}
+            style={infoBoxStyle}
+          >
+            <GroupIcon sx={iconStyle} />
+            <div>
+              <span style={labelStyle}>Участников всего</span>
+              <div style={counterStyle}>
+                <NumberCounter start={0} end={340} delay="2" />
+                <span>+</span>
               </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ x: 50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{ ...transition, delay: 1 }}
-              style={infoBoxStyle}
-            >
-              <GroupIcon sx={iconStyle} />
-              <div>
-                <span style={labelStyle}>Участников всего</span>
-                <div style={counterStyle}>
-                  <NumberCounter start={0} end={340} delay="2" />
-                  <span>+</span>
-                </div>
-              </div>
-            </motion.div>
-          </Box>
+            </div>
+          </motion.div>
         </Box>
       </Box>
-    </Box>
+    </div>
   );
 };
 
@@ -212,7 +203,9 @@ const infoBoxStyle = {
   display: "flex",
   alignItems: "center",
   gap: "1rem",
-  minWidth: 180,
+  flex: "1 1 200px", // ✅ авторастягивание, но минимальная ширина — 200px
+  maxWidth: "300px", // ✅ чтобы блоки не становились слишком широкими
+  boxSizing: "border-box", // ✅ учитываем padding в ширину
 };
 
 const iconStyle = {
@@ -221,21 +214,21 @@ const iconStyle = {
 };
 
 const labelStyle = {
-  fontSize: "14px",
+  fontSize: "clamp(12px, 1.2vw, 14px)",
 };
 
 const counterStyle = {
   display: "flex",
   alignItems: "center",
   gap: "4px",
-  fontSize: "18px",
+  fontSize: "clamp(14px, 1.8vw, 18px)",
   marginTop: "4px",
   fontWeight: "bold",
 };
 
 const numberOnlyStyle = {
   fontWeight: "bold",
-  fontSize: "18px",
+  fontSize: "clamp(14px, 1.8vw, 18px)",
   marginTop: "4px",
 };
 

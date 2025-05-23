@@ -18,9 +18,13 @@ const menuItems = [
     icon: <SportsEsportsIcon fontSize="small" />,
     path: "/tournaments",
   },
-  { label: "Новости", icon: <AnnouncementIcon fontSize="small" />, path: "/news" },
+  {
+    label: "Новости",
+    icon: <AnnouncementIcon fontSize="small" />,
+    path: "/news",
+  },
   { label: "Рейтинг", icon: <StarIcon fontSize="small" />, path: "/" },
-  { label: "О нас", icon: <InfoIcon fontSize="small" />, path: "/" },
+  { label: "О Федерации", icon: <InfoIcon fontSize="small" />, path: "/about" },
   { label: "Контакты", icon: <ContactMailIcon fontSize="small" />, path: "/" },
 ];
 
@@ -46,7 +50,7 @@ const Navbar = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          marginTop: "20px",
+          marginTop: "15px",
           backgroundColor: "rgba(34, 34, 34, 0.7)",
           borderRadius: "10px",
           padding: "10px 20px",
