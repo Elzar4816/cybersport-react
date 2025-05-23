@@ -21,20 +21,7 @@ const MainRoutes = () => {
           </ProtectedRoute>
       ), id: 5,},
     {link: "/press/news/:id", element: <PressNewsDetailPage />, id:6,},
-    { link: "/", element: <HomePage />, id: 1 },
-    { link: "/tournaments", element: <TournamentPage />, id: 2 },
-    { link: "/news", element: <NewsPage />, id: 3 },
-    { link: "/press-login", element: <PressLoginPage />, id: 4 },
-    {
-      link: "/press-panel",
-      element: (
-        <ProtectedRoute>
-          <PressPanelPage />
-        </ProtectedRoute>
-      ),
-      id: 5,
-    },
-    { link: "/about", element: <AboutUsPage />, id: 6 },
+    { link: "/about", element: <AboutUsPage />, id: 7 },
   ];
   return (
     <Routes>

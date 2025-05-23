@@ -51,7 +51,7 @@ const PressPanelPage = () => {
 
         try {
             const token = localStorage.getItem("token");
-            await axios.post("/api/press/news", formData, {
+            await axios.post("/press/news", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     Authorization: `Bearer ${token}`,
@@ -81,7 +81,7 @@ const PressPanelPage = () => {
     const handleEditSave = async () => {
         const token = localStorage.getItem("token");
         try {
-            await axios.put(`/api/press/news/${editingNews.id}`, {
+            await axios.put(`/press/news/${editingNews.id}`, {
                 title: editingNews.title,
                 content: editingNews.content,
                 videoUrl: editingNews.videoUrl,
@@ -109,7 +109,7 @@ const PressPanelPage = () => {
         setConfirmDeleteOpen(false);
         const token = localStorage.getItem("token");
         try {
-            await axios.delete(`/api/press/news/${newsToDelete.id}`, {
+            await axios.delete(`/press/news/${newsToDelete.id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setSnackbarMessage("Новость удалена");
