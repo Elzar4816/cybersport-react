@@ -6,6 +6,7 @@ import NewsPage from "../pages/NewsPage";
 import PressLoginPage from "../pages/PressLoginPage";
 import PressPanelPage from "../pages/PressPanelPage";
 import ProtectedRoute from "../component/ProtectedRoute";
+import PressNewsDetailPage from "../pages/PressNewsDetailPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -17,7 +18,8 @@ const MainRoutes = () => {
           <ProtectedRoute>
             <PressPanelPage />
           </ProtectedRoute>
-      ), id: 5,}
+      ), id: 5,},
+    {link: "/press/news/:id", element: <PressNewsDetailPage />, id:6,},
   ];
   return (
     <Routes>
