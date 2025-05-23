@@ -1,5 +1,5 @@
 // src/components/TournamentsList.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Tabs,
   Tab,
@@ -11,57 +11,9 @@ import {
   CardMedia,
 } from "@mui/material";
 import TournamentCard from "./TournamentCard";
-
-const tournamentsData = [
-  {
-    id: 1,
-    name: "VCT EMEA Stage 1 2025",
-    date: "26.03.25 - 19.05.25",
-    status: "анонс",
-    prize: "100000",
-    trailer: null,
-    description: "Этап VCT в регионе EMEA.",
-    teamsCount: 16,
-    platform: "PC",
-    gameLogo: "/logos/valorant.png",
-  },
-  {
-    id: 2,
-    name: "VCT Americas Stage 1 2025",
-    date: "21.03.25 - 05.05.25",
-    status: "регистрация",
-    prize: "100000",
-    trailer: null,
-    description: "Этап VCT в регионе Америки.",
-    teamsCount: 12,
-    platform: "PC",
-    gameLogo: "/logos/valorant.png",
-  },
-  {
-    id: 3,
-    name: "Valorant Student Cup",
-    date: "15.02.25 - 22.02.25",
-    status: "регистрация",
-    prize: "—",
-    trailer: null,
-    description: "Турнир среди студентов.",
-    teamsCount: 8,
-    platform: "PC",
-    gameLogo: "/logos/valorant.png",
-  },
-  {
-    id: 4,
-    name: "Valorant Student Cup",
-    date: "15.02.25 - 22.02.25",
-    status: "завершен",
-    prize: "—",
-    trailer: null,
-    description: "Турнир среди студентов.",
-    teamsCount: 8,
-    platform: "PC",
-    gameLogo: "/logos/valorant.png",
-  },
-];
+//import{tournamentsData} from "./TournamentsData"
+import axios from "axios";
+// ... остальной импорт
 
 const adsData = [
   {
@@ -113,16 +65,38 @@ const AdCard = ({ ad }) => (
 
 const TournamentsList = () => {
   const [tab, setTab] = useState(0);
+  const [tournaments, setTournaments] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/api/tournaments");
+        setTournaments(response.data);
+      } catch (error) {
+        console.error("Ошибка при загрузке турниров:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
 
   const handleTabChange = (event, newValue) => {
     setTab(newValue);
   };
 
-  const filteredTournaments = tournamentsData.filter((t) =>
-    tab === 0
-      ? ["анонс", "регистрация", "идёт"].includes(t.status)
-      : t.status === "завершeн"
-  );
+  const filteredTournaments = tournaments.filter((t) => {
+    const statusMap = {
+      upcoming: "анонс",
+      ongoing: "регистрация",
+      completed: "завершен"
+    };
+    const translatedStatus = statusMap[t.status];
+    return tab === 0
+        ? ["анонс", "регистрация", "идёт"].includes(translatedStatus)
+        : translatedStatus === "завершен";
+  });
+
 
   return (
     <Box sx={{ p: 4, backgroundColor: "#121212", minHeight: "100vh" }}>
