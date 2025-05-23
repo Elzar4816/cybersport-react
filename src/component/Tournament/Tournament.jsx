@@ -5,8 +5,12 @@ import TournamentsList from "./TournamentList";
 const Tournament = () => {
   return (
     <div>
-      <TournamentHero />
-      <TournamentsList />
+      <div style={{ maxWidth: "100vw", overflowX: "hidden" }}>
+        <TournamentHero />
+      </div>
+      <div>
+        <TournamentsList />
+      </div>
     </div>
   );
 };

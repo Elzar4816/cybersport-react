@@ -2,79 +2,147 @@ import React from "react";
 import {
   Box,
   Card,
-  CardContent,
   Typography,
   Button,
   Chip,
+  Avatar,
+  Stack,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-
-const formatDate = (str) => {
-  const date = new Date(str);
-  return date.toLocaleDateString("ru-RU", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "2-digit",
-  });
-};
-
-const statusLabel = {
-  upcoming: "Анонс",
-  ongoing: "Регистрация",
-  completed: "Завершён",
-};
+import LogoMLBB from "../../assets/MLBB.png";
 
 const TournamentCard = ({ tournament }) => {
-  const { title, description, start_date, end_date, region, status, prize_pool } = tournament;
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-      <Card sx={{ backgroundColor: "#1c1b22", color: "white", mb: 2, width: "100%" }}>
-        <CardContent
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
+    <Card
+      sx={{
+        backgroundColor: "#2a2a30",
+        color: "white",
+        mb: 2,
+        px: 3,
+        py: 2,
+        borderRadius: 2,
+        width: "100%",
+        minHeight: 80,
+      }}
+    >
+      <Stack
+        direction={isMobile ? "column" : "row"}
+        alignItems={isMobile ? "flex-start" : "center"}
+        justifyContent="space-between"
+        spacing={2}
+        flexWrap="wrap"
+      >
+        {/* Логотип */}
+        <Box
+          sx={{
+            width: isMobile ? "100%" : 60,
+            display: "flex",
+            justifyContent: "center",
+          }}
         >
-          <Box>
-            <Typography variant="h6" sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-              {title}
-            </Typography>
+          <Avatar
+            src={LogoMLBB}
+            alt="Game Logo"
+            variant="square"
+            sx={{ width: 78, height: 78 }}
+          />
+        </Box>
 
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 1 }}>
-              <CalendarMonthIcon fontSize="small" />
-              <Typography variant="body2">
-                {formatDate(start_date)} — {formatDate(end_date)}
-              </Typography>
-              <Chip
-                  label={statusLabel[status] || status}
-                  size="small"
-                  sx={{ backgroundColor: "#444", color: "white", ml: 2 }}
-              />
-            </Box>
+        {/* Название */}
+        <Box sx={{ width: isMobile ? "100%" : 220 }}>
+          <Typography variant="subtitle1" fontWeight="bold">
+            {tournament.name}
+          </Typography>
+        </Box>
 
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 1 }}>
-              <LocationOnIcon fontSize="small" />
-              <Typography variant="body2">Регион: {region}</Typography>
-            </Box>
+        {/* Даты */}
+        <Box
+          sx={{
+            width: isMobile ? "100%" : 160,
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+          }}
+        >
+          <CalendarMonthIcon sx={{ fontSize: 18 }} />
+          <Typography variant="body2">{tournament.date}</Typography>
+        </Box>
 
-            <Typography variant="body2" sx={{ mt: 1 }}>{description}</Typography>
-
-            <Typography variant="body2" sx={{ mt: 1, fontWeight: "bold" }}>
-              Призовой фонд: {prize_pool ? `${prize_pool} USD` : "—"}
+        {/* Описание */}
+        {!isMobile && (
+          <Box sx={{ width: 240 }}>
+            <Typography variant="body2" sx={{ opacity: 0.85 }}>
+              {tournament.description}
             </Typography>
           </Box>
+        )}
 
-          <Box display="flex" flexDirection="column" alignItems="center" gap={1}>
-            {status === "ongoing" ? (
-                <Button variant="contained" color="primary">Регистрация</Button>
-            ) : status === "completed" ? (
-                <Button variant="outlined" color="secondary">Результаты</Button>
-            ) : null}
-          </Box>
-        </CardContent>
-      </Card>
+        {/* Призовой фонд */}
+        <Box sx={{ width: isMobile ? "100%" : 140 }}>
+          <Typography variant="body2" sx={{ fontWeight: "bold" }}>
+            Приз: {tournament.prize}
+          </Typography>
+        </Box>
+
+        {/* Кнопка */}
+        <Box
+          sx={{
+            width: isMobile ? "100%" : 160,
+            textAlign: isMobile ? "left" : "right",
+          }}
+        >
+          {tournament.status === "регистрация" ? (
+            <Button
+              variant="contained"
+              sx={{
+                background: "linear-gradient(90deg, #00AEEF 0%, #00FFD1 100%)",
+                color: "#000",
+                textTransform: "none",
+                fontWeight: "bold",
+                px: 3,
+                py: 1,
+                borderRadius: 2,
+                boxShadow: "0 4px 12px rgba(0, 174, 239, 0.4)",
+                transition: "all 0.3s ease-in-out",
+                "&:hover": {
+                  background:
+                    "linear-gradient(90deg, #00FFD1 0%, #00AEEF 100%)",
+                  boxShadow: "0 6px 16px rgba(0, 255, 209, 0.5)",
+                },
+              }}
+            >
+              Регистрация
+            </Button>
+          ) : tournament.status === "завершён" ? (
+            <Button
+              variant="outlined"
+              sx={{
+                borderColor: "#aaa",
+                color: "#aaa",
+                textTransform: "none",
+                fontWeight: "bold",
+                px: 3,
+                py: 1,
+                borderRadius: 2,
+                transition: "all 0.3s ease-in-out",
+                "&:hover": {
+                  borderColor: "#fff",
+                  color: "#fff",
+                  backgroundColor: "#333",
+                },
+              }}
+            >
+              Результаты
+            </Button>
+          ) : null}
+        </Box>
+      </Stack>
+    </Card>
   );
 };
 
