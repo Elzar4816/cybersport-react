@@ -1,185 +1,185 @@
-import React, { useState } from "react";
-import { Tabs, Tab, Typography, Divider, Box, Stack } from "@mui/material";
+import React, {useState, useEffect, useRef, useLayoutEffect} from "react";
+import {
+    Tabs,
+    Tab,
+    Typography,
+    Divider,
+    Box,
+    Stack,
+} from "@mui/material";
 import TournamentCard from "./TournamentCard";
 import bgImage from "../../assets/Dark.png";
-import AllIcon from "@mui/icons-material/DashboardCustomize";
-import ValorantIcon from "../../assets/icons-valorant.png";
-import FifaIcon from "@mui/icons-material/SportsSoccer";
-import MLBBIcon from "../../assets/icons-mobile-legends.png";
+import axios from "axios";
 
-const tournamentsData = [
-  {
-    id: 1,
-    name: "KCF League Stage 1 2025",
-    date: "26.03.25 - 19.05.25",
-    status: "анонс",
-    prize: "-",
-    trailer: null,
-    description: "Этап VCT в регионе EMEA.",
-    teamsCount: 16,
-    platform: "PC",
-    game: "valorant",
-    gameLogo: "/logos/valorant.png",
-  },
-  {
-    id: 2,
-    name: "KCF LEAGUE  Stage 2 2025",
-    date: "21.03.25 - 05.05.25",
-    status: "регистрация",
-    prize: "100000 сом",
-    trailer: null,
-    description: "Этап VCT в регионе Америки.",
-    teamsCount: 12,
-    platform: "PC",
-    game: "valorant",
-    gameLogo: "/logos/valorant.png",
-  },
-  {
-    id: 3,
-    name: "KCF MLBB Season 1 2025",
-    date: "15.02.25 - 22.02.25",
-    status: "регистрация",
-    prize: "1000 сом",
-    trailer: null,
-    description: "Турнир среди студентов.",
-    teamsCount: 8,
-    platform: "PC",
-    game: "mlbb",
-    gameLogo: "/logos/valorant.png",
-  },
-  {
-    id: 4,
-    name: "Clash Royale Final 2 2025",
-    date: "01.03.25 - 10.03.25",
-    status: "регистрация",
-    prize: "3000 сом ",
-    trailer: null,
-    description: "Мультиплатформенный турнир.",
-    teamsCount: 10,
-    platform: "PS5",
-    game: "fifa",
-    gameLogo: "/logos/fifa.png",
-  },
-];
+import { Chip } from "@mui/material";
+import CancelIcon from "@mui/icons-material/Cancel";
+import gsap from "gsap";
+import { Draggable } from "gsap/Draggable";
 
 const TournamentsList = () => {
-  const [tab, setTab] = useState(0);
-  const [gameFilter, setGameFilter] = useState("all");
+    const [tab, setTab] = useState(0);
+    const [gameFilter, setGameFilter] = useState("all");
+    const [tournaments, setTournaments] = useState([]);
+    const [games, setGames] = useState([]);
+    const chipContainerRef = useRef(null);
+    useEffect(() => {
+        axios.get("/api/tournaments")
+            .then((res) => setTournaments(res.data))
+            .catch((err) => console.error("Ошибка загрузки турниров:", err));
+    }, []);
+    useEffect(() => {
+        axios.get("/api/games")
+            .then((res) => setGames(res.data))
+            .catch((err) => console.error("Ошибка загрузки игр:", err));
+    }, []);
+    useEffect(() => {
+        if (!chipContainerRef.current) return;
 
-  const handleTabChange = (event, newValue) => {
-    setTab(newValue);
-  };
+        gsap.registerPlugin(Draggable);
+        Draggable.create(chipContainerRef.current, {
+            type: "x",
+            edgeResistance: 0.85,
+            bounds: chipContainerRef.current.parentElement,
+            inertia: true,
+            cursor: "grab",
+            activeCursor: "grabbing",
+        });
+    }, []);
+    const cardsContainerRef = useRef([]);
+    cardsContainerRef.current = [];
 
-  const handleGameFilter = (game) => {
-    setGameFilter(game);
-  };
+    const addToRefs = (el) => {
+        if (el && !cardsContainerRef.current.includes(el)) {
+            cardsContainerRef.current.push(el);
+        }
+    };
+    const filteredTournaments = tournaments.filter((t) => {
+        const isUpcoming = t.status !== "completed";
+        const tabMatch = tab === 0 ? isUpcoming : !isUpcoming;
+        const gameMatch = gameFilter === "all" || (t.game?.name && slugify(t.game.name) === gameFilter);
+        return tabMatch && gameMatch;
+    });
+    useLayoutEffect(() => {
+        gsap.fromTo(
+            cardsContainerRef.current,
+            { opacity: 0, y: 20 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                stagger: 0.1,
+                ease: "power3.out",
+            }
+        );
+    }, [filteredTournaments]);
 
-  const filteredTournaments = tournamentsData.filter((t) => {
-    const statusFilter =
-      tab === 0
-        ? ["анонс", "регистрация", "идёт"].includes(t.status)
-        : t.status === "завершён";
-    const gameFilterMatch = gameFilter === "all" || t.game === gameFilter;
-    return statusFilter && gameFilterMatch;
-  });
+    const handleTabChange = (event, newValue) => {
+        setTab(newValue);
+    };
 
-  return (
-    <Box
-      sx={{
-        p: 4,
-        backgroundImage: `url(${bgImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundColor: "#121212",
-        // minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Typography
-        variant="h4"
-        color="white"
-        sx={{ mb: 3, textAlign: "center" }}
-      >
-        Турниры по киберспорту
-      </Typography>
+    const handleGameFilter = (game) => {
+        setGameFilter(game);
+    };
 
-      <Stack
-        direction="row"
-        spacing={2}
-        sx={{ mb: 2, flexWrap: "wrap", justifyContent: "center" }}
-      >
+
+
+    return (
         <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            cursor: "pointer",
-            color: gameFilter === "all" ? "#00AEEF" : "white",
-          }}
-          onClick={() => handleGameFilter("all")}
+            sx={{
+                p: 4,
+                backgroundImage: `url(${bgImage})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                backgroundColor: "#121212",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
         >
-          <AllIcon sx={{ mr: 0.5 }} />
-          <Typography>Все</Typography>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            cursor: "pointer",
-            color: gameFilter === "valorant" ? "#00AEEF" : "white",
-          }}
-          onClick={() => handleGameFilter("valorant")}
-        >
-          <img src={ValorantIcon} alt="" style={{ mr: 0.5 }} width={25} />
-          <Typography>Valorant</Typography>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            cursor: "pointer",
-            color: gameFilter === "fifa" ? "#00AEEF" : "white",
-          }}
-          onClick={() => handleGameFilter("fifa")}
-        >
-          <FifaIcon sx={{ mr: 0.5 }} />
-          <Typography>FIFA</Typography>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            cursor: "pointer",
-            color: gameFilter === "fifa" ? "#00AEEF" : "white",
-          }}
-          onClick={() => handleGameFilter("fifa")}
-        >
-          <img src={MLBBIcon} alt="" style={{ mr: 0.5 }} width={25} />
-          <Typography>MLBB</Typography>
-        </Box>
-        {/* Добавить другие игры по необходимости */}
-      </Stack>
+            <Typography
+                variant="h4"
+                color="white"
+                sx={{ mb: 3, textAlign: "center" }}
+            >
+                Турниры по киберспорту
+            </Typography>
+            <Box
+                sx={{
+                    width: "100%",
+                    overflow: "hidden",
+                    mb: 2,
+                }}
+            >
+                <Stack
+                    ref={chipContainerRef}
+                    direction="row"
+                    spacing={1}
+                    sx={{
+                        width: "max-content",
+                        userSelect: "none",
+                    }}
+                >
+                    {/* Chip items go here */}
+                    <Chip
+                        label="Все"
+                        onClick={() => setGameFilter("all")}
+                        color={gameFilter === "all" ? "primary" : "default"}
+                        sx={{
+                            backgroundColor: gameFilter === "all" ? "#00AEEF" : "#2a2a30",
+                            color: "white",
+                            fontWeight: "bold",
+                            "&:hover": { backgroundColor: "#00AEEF" },
+                        }}
+                    />
+                    {games.map((g) => {
+                        const slug = slugify(g.name);
+                        const selected = slug === gameFilter;
+                        return (
+                            <Chip
+                                key={g.id}
+                                label={g.name}
+                                onClick={() => setGameFilter(slug)}
+                                onDelete={selected ? () => setGameFilter("all") : undefined}
+                                deleteIcon={selected ? <CancelIcon sx={{ color: "white" }} /> : undefined}
+                                sx={{
+                                    backgroundColor: selected ? "#00AEEF" : "#2a2a30",
+                                    color: "white",
+                                    fontWeight: "bold",
+                                    "&:hover": { backgroundColor: "#00AEEF" },
+                                }}
+                            />
+                        );
+                    })}
+                </Stack>
+            </Box>
+            <Tabs
+                value={tab}
+                onChange={handleTabChange}
+                textColor="inherit"
+                TabIndicatorProps={{ style: { backgroundColor: "#00AEEF" } }}
+            >
+                <Tab label="Ближайшие" sx={{ color: "white" }} />
+                <Tab label="Прошедшие" sx={{ color: "white" }} />
+            </Tabs>
 
-      <Tabs
-        value={tab}
-        onChange={handleTabChange}
-        textColor="inherit"
-        TabIndicatorProps={{ style: { backgroundColor: "#00AEEF" } }}
-      >
-        <Tab label="Ближайшие" sx={{ color: "white" }} />
-        <Tab label="Прошедшие" sx={{ color: "white" }} />
-      </Tabs>
+            <Divider sx={{ borderColor: "#333", my: 2 }} />
 
-      <Divider sx={{ borderColor: "#333", my: 2 }} />
+            {filteredTournaments.map((t, index) => (
+                <Box key={t.id} ref={addToRefs} sx={{ width: "100%" }}>
+                    <TournamentCard tournament={t} />
+                </Box>
+            ))}
 
-      {filteredTournaments.map((t) => (
-        <TournamentCard key={t.id} tournament={t} />
-      ))}
-    </Box>
-  );
+        </Box>
+    );
 };
+
+const slugify = (str) =>
+    str
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/gi, "-")
+        .replace(/(^-|-$)/g, "");
 
 export default TournamentsList;
