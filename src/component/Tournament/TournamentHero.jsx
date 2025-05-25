@@ -40,7 +40,7 @@ const TournamentHero = () => {
           sx={{
             width: "100%",
             overflowX: "hidden",
-            height: "100vh",
+            height: "500px",
             backgroundImage: `url(${bannerImg})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
