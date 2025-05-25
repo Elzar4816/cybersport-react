@@ -167,7 +167,7 @@ const NewsDetail = () => {
             <Box
               key={item.id}
               component="a"
-              href={`/news/${item.id}`}
+              href={`/press/news/${item.id}`}
               sx={{
                 display: "flex",
                 flexDirection: "column",
