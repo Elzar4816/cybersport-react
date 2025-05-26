@@ -4,6 +4,8 @@ import { Box, Typography, Button } from "@mui/material";
 import heroImage from "../../assets/hero-image1.jpg";
 import Logo from "../../assets/logoKCF.png";
 import { motion } from "framer-motion";
+import bannerHero from "../../assets/banner-hero.png";
+
 const Hero = () => {
   return (
     <Box

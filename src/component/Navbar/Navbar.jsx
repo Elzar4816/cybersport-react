@@ -25,7 +25,11 @@ const menuItems = [
   },
   { label: "Рейтинг", icon: <StarIcon fontSize="small" />, path: "/" },
   { label: "О Федерации", icon: <InfoIcon fontSize="small" />, path: "/about" },
-  { label: "Контакты", icon: <ContactMailIcon fontSize="small" />, path: "/" },
+  {
+    label: "Контакты",
+    icon: <ContactMailIcon fontSize="small" />,
+    path: "/contact",
+  },
 ];
 
 const Navbar = () => {

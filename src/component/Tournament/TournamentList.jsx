@@ -95,7 +95,7 @@ const TournamentsList = () => {
       <Typography
         variant="h4"
         color="white"
-        sx={{ mb: 3, textAlign: "center" }}
+        sx={{ mb: 3, textAlign: "center", marginTop: "20px" }}
       >
         Турниры по киберспорту
       </Typography>
