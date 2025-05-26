@@ -25,119 +25,138 @@ const partnerLogos = [
 ];
 
 const PartnersSponsors = () => {
-  const logosRef = useRef([]);
+    const logosRef = useRef([]);
+    const containerRef = useRef(null);
+    const observerRef = useRef(null);
 
-  useEffect(() => {
-    // Убедимся, что ссылки уже расставлены
-    if (!logosRef.current.length || !logosRef.current[0]) {
-      console.warn("Логотипы ещё не готовы:", logosRef.current);
-      return;
-    }
+    useEffect(() => {
+        const el = containerRef.current;
+        if (!el) return;
 
-    const container = logosRef.current[0].parentNode;
+        const runAnimation = () => {
+            if (!logosRef.current[0]) return;
 
-    console.log("▶️ ScrollTrigger будет срабатывать на:", container);
+            gsap.fromTo(
+                logosRef.current,
+                {
+                    opacity: 0,
+                    y: 50,
+                    scale: 0.9,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 1,
+                    stagger: {
+                        each: 0.15,
+                        from: "center",
+                    },
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 80%",
+                        end: "top 50%",
+                        toggleActions: "play none none reverse",
+                        scrub: true,
+                        markers: true,
+                    },
+                }
+            );
 
-    // Анимация появления с волной
-    gsap.fromTo(
-      logosRef.current,
-      {
-        opacity: 0,
-        y: 50,
-        scale: 0.9,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 1,
-        stagger: {
-          each: 0.15,
-          from: "center",
-        },
-        scrollTrigger: {
-          trigger: container,
-          start: "top 80%",
-          end: "top 50%",
-          toggleActions: "play none none reverse",
-          scrub: true,
-          markers: false, // ✅ включи для визуальной отладки
-        },
-      }
+            ScrollTrigger.refresh();
+        };
+
+        // Настроим ResizeObserver
+        let resizeTimeout;
+        observerRef.current = new ResizeObserver(() => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                runAnimation();
+            }, 200); // ждём "стабилизации" размера
+        });
+
+        observerRef.current.observe(el);
+
+        return () => {
+            if (observerRef.current) observerRef.current.disconnect();
+            clearTimeout(resizeTimeout);
+        };
+    }, []);
+
+    useEffect(() => {
+        // Эффект курсора
+        const logos = logosRef.current;
+        logos.forEach((logo) => {
+            logo.addEventListener("mousemove", (e) => {
+                const rect = logo.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                gsap.to(logo, {
+                    x: x * 0.1,
+                    y: y * 0.1,
+                    scale: 1.05,
+                    duration: 0.3,
+                });
+            });
+
+            logo.addEventListener("mouseleave", () => {
+                gsap.to(logo, {
+                    x: 0,
+                    y: 0,
+                    scale: 1,
+                    duration: 0.3,
+                });
+            });
+        });
+    }, []);
+
+    return (
+        <Box ref={containerRef} sx={{ my: 5, px: { xs: 2, md: 10 } }}>
+            <Typography
+                variant="h4"
+                component="h2"
+                sx={{
+                    color: "white",
+                    mb: 4,
+                    fontWeight: "bold",
+                    textAlign: "center",
+                }}
+            >
+                Наши партнёры и спонсоры
+            </Typography>
+
+            <Box
+                sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    gap: 4,
+                }}
+            >
+                {partnerLogos.map(({ name, logo }, idx) => (
+                    <Box
+                        key={idx}
+                        component="img"
+                        ref={(el) => (logosRef.current[idx] = el)}
+                        src={logo}
+                        alt={name}
+                        title={name}
+                        sx={{
+                            height: { xs: 80, sm: 100, md: 120 },
+                            flexShrink: 0,
+                            filter: "grayscale(100%)",
+                            transition: "filter 0.3s ease",
+                            cursor: "pointer",
+                            "&:hover": {
+                                filter: "none",
+                            },
+                        }}
+                    />
+                ))}
+            </Box>
+        </Box>
     );
-
-    // Магнитный эффект при наведении
-    const logos = logosRef.current;
-    logos.forEach((logo) => {
-      logo.addEventListener("mousemove", (e) => {
-        const rect = logo.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        gsap.to(logo, {
-          x: x * 0.1,
-          y: y * 0.1,
-          scale: 1.05,
-          duration: 0.3,
-        });
-      });
-
-      logo.addEventListener("mouseleave", () => {
-        gsap.to(logo, {
-          x: 0,
-          y: 0,
-          scale: 1,
-          duration: 0.3,
-        });
-      });
-    });
-  }, []);
-
-  return (
-    <Box sx={{ my: 5, px: { xs: 2, md: 10 } }}>
-      <Typography
-        variant="h4"
-        component="h2"
-        sx={{
-          color: "white",
-          mb: 4,
-          fontWeight: "bold",
-          textAlign: "center",
-        }}
-      >
-        Наши партнёры и спонсоры
-      </Typography>
-
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          gap: 4,
-        }}
-      >
-        {partnerLogos.map(({ name, logo }, idx) => (
-          <Box
-            key={idx}
-            component="img"
-            ref={(el) => (logosRef.current[idx] = el)}
-            src={logo}
-            alt={name}
-            title={name}
-            sx={{
-              height: { xs: 80, sm: 100, md: 120 },
-              flexShrink: 0,
-              filter: "grayscale(100%)",
-              transition: "filter 0.3s ease",
-              cursor: "pointer",
-              "&:hover": {
-                filter: "none",
-              },
-            }}
-          />
-        ))}
-      </Box>
-    </Box>
-  );
 };
+
 
 export default PartnersSponsors;
