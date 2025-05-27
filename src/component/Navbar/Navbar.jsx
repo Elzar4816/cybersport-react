@@ -25,7 +25,11 @@ const menuItems = [
   },
   { label: "Рейтинг", icon: <StarIcon fontSize="small" />, path: "/" },
   { label: "О Федерации", icon: <InfoIcon fontSize="small" />, path: "/about" },
-  { label: "Контакты", icon: <ContactMailIcon fontSize="small" />, path: "/" },
+  {
+    label: "Контакты",
+    icon: <ContactMailIcon fontSize="small" />,
+    path: "/contact",
+  },
 ];
 
 const Navbar = () => {
@@ -109,7 +113,12 @@ const Navbar = () => {
         </div>
 
         {menuItems.map((item, idx) => (
-          <Link key={idx} to={item.path} style={{ textDecoration: "none" }}>
+          <Link
+            key={idx}
+            to={item.path}
+            style={{ textDecoration: "none" }}
+            onClick={() => setMenuOpen(false)}
+          >
             <p style={{ ...menuItemStyle, fontSize: "16px" }}>
               {item.icon} {item.label}
             </p>

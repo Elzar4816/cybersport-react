@@ -8,6 +8,7 @@ import PressPanelPage from "../pages/PressPanelPage";
 import ProtectedRoute from "../component/ProtectedRoute";
 import PressNewsDetailPage from "../pages/PressNewsDetailPage";
 import AboutUsPage from "../pages/AboutUsPage";
+import ContactPage from "../pages/ContactPage";
 import PressTournamentsPage from "../pages/PressTournamentsPage";
 
 const MainRoutes = () => {
@@ -27,11 +28,16 @@ const MainRoutes = () => {
     },
     { link: "/press/news/:id", element: <PressNewsDetailPage />, id: 6 },
     { link: "/about", element: <AboutUsPage />, id: 7 },
-    { link: "/press/tournaments", element: (
-          <ProtectedRoute>
-            <PressTournamentsPage />
-          </ProtectedRoute>
-      ), id: 8 },
+    { link: "/contact", element: <ContactPage />, id: 18 },
+    {
+      link: "/press/tournaments",
+      element: (
+        <ProtectedRoute>
+          <PressTournamentsPage />
+        </ProtectedRoute>
+      ),
+      id: 8,
+    },
   ];
   return (
     <Routes>

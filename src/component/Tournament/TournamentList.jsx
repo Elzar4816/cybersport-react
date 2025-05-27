@@ -1,14 +1,22 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
-import { Tabs, Tab, Typography, Divider, Box, Stack } from "@mui/material";
+import {
+  Tabs,
+  Tab,
+  Typography,
+  Divider,
+  Box,
+  Stack,
+  Button,
+} from "@mui/material";
 import TournamentCard from "./TournamentCard";
 import bgImage from "../../assets/Dark.png";
 import axios from "axios";
-
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import { Chip } from "@mui/material";
 import CancelIcon from "@mui/icons-material/Cancel";
 import gsap from "gsap";
 import { Draggable } from "gsap/Draggable";
-
+import TelegramIcon from "@mui/icons-material/Telegram";
 const TournamentsList = () => {
   const [tab, setTab] = useState(0);
   const [gameFilter, setGameFilter] = useState("all");
@@ -95,7 +103,7 @@ const TournamentsList = () => {
       <Typography
         variant="h4"
         color="white"
-        sx={{ mb: 3, textAlign: "center" }}
+        sx={{ mb: 3, textAlign: "center", marginTop: "20px" }}
       >
         Турниры по киберспорту
       </Typography>
@@ -164,11 +172,60 @@ const TournamentsList = () => {
 
       <Divider sx={{ borderColor: "#333", my: 2 }} />
 
-      {filteredTournaments.map((t, index) => (
-        <Box key={t.id} ref={addToRefs} sx={{ width: "90%" }}>
-          <TournamentCard tournament={t} />
+      {filteredTournaments.length > 0 ? (
+        filteredTournaments.map((t, index) => (
+          <Box key={t.id} ref={addToRefs} sx={{ width: "90%" }}>
+            <TournamentCard tournament={t} />
+          </Box>
+        ))
+      ) : (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            py: 6,
+          }}
+        >
+          <SportsEsportsIcon sx={{ fontSize: 80, color: "#555" }} />
+          <Typography
+            variant="h6"
+            color="white"
+            sx={{ mt: 2, textAlign: "center" }}
+          >
+            Пока нет ближайших турниров
+          </Typography>
+          <Typography
+            variant="body2"
+            color="gray"
+            sx={{ mt: 1, textAlign: "center", maxWidth: 400 }}
+          >
+            Следите за нашими новостями, чтобы не пропустить свежие анонсы и
+            новые турниры!
+          </Typography>
+          <Button
+            variant="outlined"
+            startIcon={<TelegramIcon />}
+            sx={{
+              mt: 3,
+              color: "#00AEEF",
+              borderColor: "#00AEEF",
+              textTransform: "none",
+              borderRadius: "12px",
+              "&:hover": {
+                backgroundColor: "#00AEEF",
+                color: "white",
+              },
+            }}
+            onClick={() =>
+              window.open("https://t.me/kyrgyz_cybersport_federation", "_blank")
+            }
+          >
+            Наш Telegram-канал
+          </Button>
         </Box>
-      ))}
+      )}
     </Box>
   );
 };
