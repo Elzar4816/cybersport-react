@@ -5,8 +5,10 @@ import heroImage from "../../assets/hero-image1.jpg";
 import Logo from "../../assets/logoKCF.png";
 import { motion } from "framer-motion";
 import bannerHero from "../../assets/banner-hero.png";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -20,7 +22,7 @@ const Hero = () => {
         px: 4,
         mt: 3,
         overflow: "hidden",
-        marginTop: "30px",
+        marginTop: "0px",
         marginBottom: "100px",
         padding: "0 20px",
       }}
@@ -97,6 +99,7 @@ const Hero = () => {
                 backgroundColor: "#922f3d",
               },
             }}
+            onClick={() => navigate("/about")}
           >
             Подробнее
           </Button>

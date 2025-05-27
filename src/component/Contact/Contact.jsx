@@ -4,10 +4,10 @@ import {
   FaPhoneAlt,
   FaFax,
   FaEnvelope,
-  FaFacebookF,
-  FaTwitter,
   FaInstagram,
-  FaLinkedinIn,
+  FaTelegramPlane,
+  FaTiktok,
+  FaYoutube,
 } from "react-icons/fa";
 import "./Contact.css";
 import { Box } from "@mui/material";
@@ -48,13 +48,13 @@ const Contact = () => {
       <div className="contact-form-wrapper">
         <div className="contact-text">
           <h2>Связаться</h2>
-          <p>
+          <p style={{ fontSize: "20px" }}>
             <strong>Кыргызская Киберспортивная Федерация</strong> — это
             официальная организация, продвигающая развитие киберспорта в
             Кыргызстане. Мы поддерживаем игроков, команды и организаторов,
             создавая условия для роста и международного сотрудничества.
           </p>
-          <p>
+          <p style={{ fontSize: "20px" }}>
             Следите за нашими мероприятиями, турнирами и образовательными
             программами. Свяжитесь с нами для сотрудничества или участия в
             киберспортивной жизни страны!
@@ -62,16 +62,16 @@ const Contact = () => {
 
           <div className="social-icons">
             <a href="#">
-              <FaFacebookF />
-            </a>
-            <a href="#">
-              <FaTwitter />
-            </a>
-            <a href="#">
               <FaInstagram />
             </a>
             <a href="#">
-              <FaLinkedinIn />
+              <FaTelegramPlane />
+            </a>
+            <a href="#">
+              <FaTiktok />
+            </a>
+            <a href="#">
+              <FaYoutube />
             </a>
           </div>
         </div>

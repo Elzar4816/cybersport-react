@@ -3,7 +3,7 @@ import axios from "axios";
 import NewsCard from "./NewsCard";
 import RightSidebar from "./RightSidebar";
 import { Box, Typography, Button, CircularProgress } from "@mui/material";
-
+import TelegramIcon from "@mui/icons-material/Telegram";
 const NewsList = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -44,8 +44,39 @@ const NewsList = () => {
           <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
             <CircularProgress color="inherit" />
           </Box>
-        ) : error ? (
-          <Typography color="error">{error}</Typography>
+        ) : news.length === 0 ? (
+          <Box sx={{ textAlign: "center", mt: 4 }}>
+            <Typography variant="h6" color="white" gutterBottom>
+              Пока новостей нет
+            </Typography>
+            <Typography variant="body2" color="gray">
+              Загляните позже или подпишитесь на наш Telegram-канал, чтобы
+              узнавать о свежих обновлениях первыми!
+            </Typography>
+            <Button
+              variant="outlined"
+              startIcon={<TelegramIcon />}
+              onClick={() =>
+                window.open(
+                  "https://t.me/kyrgyz_cybersport_federation",
+                  "_blank"
+                )
+              }
+              sx={{
+                mt: 3,
+                color: "#00AEEF",
+                borderColor: "#00AEEF",
+                textTransform: "none",
+                borderRadius: "12px",
+                "&:hover": {
+                  backgroundColor: "#00AEEF",
+                  color: "white",
+                },
+              }}
+            >
+              Наш Telegram-канал
+            </Button>
+          </Box>
         ) : (
           <>
             <Box

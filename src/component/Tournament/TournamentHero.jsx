@@ -20,7 +20,7 @@ const TournamentHero = () => {
             textAlign: "center",
             width: "100%",
             height: "80px",
-            backgroundColor: "#222223",
+            backgroundColor: "rgb(39 39 43)",
             fontSize: "18px",
             color: "#a3a3a3",
             fontWeight: "500",

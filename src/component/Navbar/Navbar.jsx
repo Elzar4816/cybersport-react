@@ -113,7 +113,12 @@ const Navbar = () => {
         </div>
 
         {menuItems.map((item, idx) => (
-          <Link key={idx} to={item.path} style={{ textDecoration: "none" }}>
+          <Link
+            key={idx}
+            to={item.path}
+            style={{ textDecoration: "none" }}
+            onClick={() => setMenuOpen(false)}
+          >
             <p style={{ ...menuItemStyle, fontSize: "16px" }}>
               {item.icon} {item.label}
             </p>
