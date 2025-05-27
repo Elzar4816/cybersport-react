@@ -49,12 +49,12 @@ const PressTournamentsPage = () => {
 
             if (editIndex !== null) {
                 const tournamentId = tournaments[editIndex].id;
-                await axios.put(`/press/tournaments/${tournamentId}`, payload, {
+                await axios.put(`/api/press/tournaments/${tournamentId}`, payload, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setSnackbar({ open: true, message: "Турнир обновлён", severity: "info" });
             } else {
-                await axios.post("/press/tournaments", payload, {
+                await axios.post("/api/press/tournaments", payload, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setSnackbar({ open: true, message: "Турнир создан", severity: "success" });
@@ -81,7 +81,7 @@ const PressTournamentsPage = () => {
         setConfirmDeleteOpen(false);
         const token = localStorage.getItem("token");
         try {
-            await axios.delete(`/press/tournaments/${tournamentToDelete.id}`, {
+            await axios.delete(`/api/press/tournaments/${tournamentToDelete.id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setSnackbar({ open: true, message: "Турнир удалён", severity: "success" });

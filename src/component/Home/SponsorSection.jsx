@@ -58,7 +58,7 @@ const PartnersSponsors = () => {
                         end: "top 50%",
                         toggleActions: "play none none reverse",
                         scrub: true,
-                        markers: true,
+                        markers: false,
                     },
                 }
             );
