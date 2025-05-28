@@ -92,8 +92,8 @@ const PartnersSponsors = () => {
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
         gsap.to(logo, {
-          x: x * 0.1,
-          y: y * 0.1,
+          x: x * 0.05,
+          y: y * 0.05,
           scale: 1.05,
           duration: 0.3,
         });
@@ -125,12 +125,35 @@ const PartnersSponsors = () => {
         Наши партнёры и спонсоры
       </Typography>
 
+      {/* <div style={{ width: "80%", color: "white" }}>
+        <div>
+          <p>OUR VALUED</p>
+          <h3>Pack Partners</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
+            temporibus ratione suscipit tempore ea nostrum expedita excepturi,
+            neque numquam veritatis.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique,
+            vel.
+          </p>
+          <button>Lorem, ipsum. </button>
+        </div>
+        <div>
+          {partnerLogos.map(({ name, logo }, idx) => (
+p     
+          ))}
+        </div>
+      </div> */}
+
       <Box
         sx={{
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "center",
           gap: 4,
+          overflow: "hidden",
         }}
       >
         {partnerLogos.map(({ name, logo }, idx) => (
@@ -143,6 +166,7 @@ const PartnersSponsors = () => {
             title={name}
             sx={{
               height: { xs: 80, sm: 100, md: 120 },
+              overflow: "hidden",
               flexShrink: 0,
               filter: "grayscale(100%)",
               transition: "filter 0.3s ease",

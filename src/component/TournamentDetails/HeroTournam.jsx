@@ -358,24 +358,24 @@ const TournamentCard = () => {
                 </div>
               </div>
             </div>
-            <div className="info-grid">
-              <div>
-                <div className="value">27.05.2025</div>
-                <div className="desc">Регистрация</div>
-              </div>
-              <div>
-                <div className="value">30.05.2025</div>
-                <div className="desc">Начало турнира</div>
-              </div>
-              <div>
-                <div className="value">10.06.2025</div>
-                <div className="desc">Конец турнира</div>
-              </div>
-              <div>
-                <div className="value">5×5</div>
-                <div className="desc">Формат</div>
-              </div>
-            </div>
+          </div>
+        </div>
+        <div className="info-grid">
+          <div>
+            <div className="value">27.05.2025</div>
+            <div className="desc">Регистрация</div>
+          </div>
+          <div>
+            <div className="value">30.05.2025</div>
+            <div className="desc">Начало турнира</div>
+          </div>
+          <div>
+            <div className="value">10.06.2025</div>
+            <div className="desc">Конец турнира</div>
+          </div>
+          <div>
+            <div className="value">5×5</div>
+            <div className="desc">Формат</div>
           </div>
         </div>
 

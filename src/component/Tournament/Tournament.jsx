@@ -6,9 +6,9 @@ import FeaturedTournament from "./FeaturedTournament";
 const Tournament = () => {
   return (
     <div>
-      <div style={{ maxWidth: "100vw", overflowX: "hidden" }}>
+      {/* <div style={{ maxWidth: "100vw", overflowX: "hidden" }}>
         <TournamentHero />
-      </div>
+      </div> */}
       <div>
         <FeaturedTournament />
       </div>

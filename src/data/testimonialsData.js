@@ -1,20 +1,20 @@
-import image3 from "../assets/organization/prezident1.webp";
-import image2 from "../assets/organization/secretar.png";
-import image1 from "../assets/organization/tiny.jpg";
+import image3 from "../assets/organization/prezident1.jpg";
+import image2 from "../assets/organization/secretar.jpg";
+import image1 from "../assets/organization/president.jpg";
 
 export const testimonialsData = [
   {
     image: image1,
     review:
       "Опытный руководитель с международным видением, выстраивает стратегию и ключевые партнёрства для развития киберспорта в Кыргызстане.",
-    name: "Ыйлайтегин Абдуллах",
+    name: "Ылайтегин Абдуллах Таалайбек уулу",
     status: "Президент Федерации",
   },
   {
     image: image2,
     review:
       "Отвечает за административную координацию, международное сотрудничество и эффективное функционирование всех подразделений Федерации.",
-    name: "Бекболотов Баэль",
+    name: "Бекболотов Баэль  Бакытбекович",
     status: "Генеральный секретарь",
   },
   {

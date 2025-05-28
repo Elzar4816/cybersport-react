@@ -40,6 +40,7 @@ const FeaturedTournament = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        marginTop: "90px",
       }}
     >
       <Typography

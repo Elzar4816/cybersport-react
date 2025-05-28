@@ -33,11 +33,7 @@ const Contact = () => {
           <h3>НОМЕР ТЕЛЕФОНА</h3>
           <p>+996 505 055 350</p>
         </div>
-        <div className="contact-card">
-          <FaFax className="icon" />
-          <h3>ФАКС</h3>
-          <p>312-234-567-890</p>
-        </div>
+
         <div className="contact-card">
           <FaEnvelope className="icon" />
           <h3>ЭЛ. АДРЕС</h3>
