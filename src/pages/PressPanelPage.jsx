@@ -19,8 +19,14 @@ const PressPanelPage = () => {
     const [image, setImage] = useState(null);
     const [news, setNews] = useState([]);
     const [createOpen, setCreateOpen] = useState(false);
+
     const [editDialogOpen, setEditDialogOpen] = useState(false);
     const [editingNews, setEditingNews] = useState(null);
+    const [editImage, setEditImage] = useState(null); // новый файл
+    const [editPreviewUrl, setEditPreviewUrl] = useState(""); // текущая картинка
+    const [editImageDeleted, setEditImageDeleted] = useState(false);
+
+
     const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);
     const [newsToDelete, setNewsToDelete] = useState(null);
     const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -51,7 +57,7 @@ const PressPanelPage = () => {
 
         try {
             const token = localStorage.getItem("token");
-            await axios.post("/press/news", formData, {
+            await axios.post("/api/press/news", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     Authorization: `Bearer ${token}`,
@@ -75,19 +81,29 @@ const PressPanelPage = () => {
 
     const openEditDialog = (item) => {
         setEditingNews(item);
+        setEditPreviewUrl(item.imageUrl || "");
+        setEditImage(null);
         setEditDialogOpen(true);
     };
+
 
     const handleEditSave = async () => {
         const token = localStorage.getItem("token");
         try {
-            await axios.put(`/press/news/${editingNews.id}`, {
-                title: editingNews.title,
-                content: editingNews.content,
-                videoUrl: editingNews.videoUrl,
-            }, {
-                headers: { Authorization: `Bearer ${token}` }
+            const formData = new FormData();
+            formData.append("title", editingNews.title);
+            formData.append("content", editingNews.content);
+            formData.append("videoUrl", editingNews.videoUrl);
+            if (editImage) formData.append("image", editImage);
+            formData.append("removeImage", editImageDeleted ? "true" : "false");
+
+            await axios.put(`/api/press/news/${editingNews.id}`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    Authorization: `Bearer ${token}`,
+                },
             });
+            setEditImageDeleted(false);
             setEditDialogOpen(false);
             setSnackbarMessage("Новость обновлена");
             setSnackbarSeverity("info");
@@ -100,6 +116,7 @@ const PressPanelPage = () => {
         }
     };
 
+
     const handleDelete = (item) => {
         setNewsToDelete(item);
         setConfirmDeleteOpen(true);
@@ -109,7 +126,7 @@ const PressPanelPage = () => {
         setConfirmDeleteOpen(false);
         const token = localStorage.getItem("token");
         try {
-            await axios.delete(`/press/news/${newsToDelete.id}`, {
+            await axios.delete(`/api/press/news/${newsToDelete.id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setSnackbarMessage("Новость удалена");
@@ -198,21 +215,86 @@ const PressPanelPage = () => {
                     <TextField
                         label="Заголовок"
                         value={editingNews?.title || ""}
-                        onChange={(e) => setEditingNews({ ...editingNews, title: e.target.value })}
+                        onChange={(e) => setEditingNews({...editingNews, title: e.target.value})}
                         fullWidth margin="dense"
                     />
                     <TextField
                         label="Содержимое"
                         value={editingNews?.content || ""}
-                        onChange={(e) => setEditingNews({ ...editingNews, content: e.target.value })}
+                        onChange={(e) => setEditingNews({...editingNews, content: e.target.value})}
                         fullWidth margin="dense" multiline rows={4}
                     />
                     <TextField
                         label="Ссылка на YouTube"
                         value={editingNews?.videoUrl || ""}
-                        onChange={(e) => setEditingNews({ ...editingNews, videoUrl: e.target.value })}
+                        onChange={(e) => setEditingNews({...editingNews, videoUrl: e.target.value})}
                         fullWidth margin="dense"
                     />
+                    <div
+                        onDrop={(e) => {
+                            e.preventDefault();
+                            const file = e.dataTransfer.files[0];
+                            setEditImage(file);
+                            setEditPreviewUrl(URL.createObjectURL(file));
+                        }}
+                        onDragOver={(e) => e.preventDefault()}
+                        style={{
+                            border: "2px dashed #aaa",
+                            borderRadius: 10,
+                            padding: 16,
+                            marginTop: 16,
+                            textAlign: "center",
+                            position: "relative",
+                            backgroundColor: "#f9f9f9"
+                        }}
+                    >
+                        {editPreviewUrl ? (
+                            <div style={{position: "relative", display: "inline-block"}}>
+                                <img
+                                    src={editPreviewUrl}
+                                    alt="preview"
+                                    style={{maxWidth: "100%", maxHeight: 180, borderRadius: 8}}
+                                />
+                                <IconButton
+                                    onClick={() => {
+                                        setEditPreviewUrl("");
+                                        setEditImage(null);
+                                        setEditImageDeleted(true);
+                                    }}
+                                    style={{
+                                        position: "absolute",
+                                        top: 0,
+                                        right: 0,
+                                        backgroundColor: "rgba(0,0,0,0.5)",
+                                        color: "white"
+                                    }}
+                                >
+                                    ✕
+                                </IconButton>
+                            </div>
+                        ) : (
+                            <Typography variant="body2" color="textSecondary">
+                                Перетащи изображение сюда или нажми, чтобы выбрать
+                            </Typography>
+                        )}
+                        <input
+                            type="file"
+                            accept="image/*"
+                            hidden
+                            id="edit-image-upload"
+                            onChange={(e) => {
+                                const file = e.target.files[0];
+                                setEditImage(file);
+                                setEditPreviewUrl(URL.createObjectURL(file));
+                            }}
+                        />
+                        <label htmlFor="edit-image-upload">
+                            <Button component="span" variant="outlined" sx={{mt: 1}}>
+                                Загрузить вручную
+                            </Button>
+                        </label>
+                    </div>
+
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={() => setEditDialogOpen(false)}>Отмена</Button>
@@ -232,7 +314,7 @@ const PressPanelPage = () => {
             </Dialog>
 
             <Snackbar open={snackbarOpen} autoHideDuration={3000} onClose={() => setSnackbarOpen(false)}>
-                <Alert severity={snackbarSeverity} sx={{ width: '100%' }}>{snackbarMessage}</Alert>
+                <Alert severity={snackbarSeverity} sx={{width: '100%'}}>{snackbarMessage}</Alert>
             </Snackbar>
         </div>
     );

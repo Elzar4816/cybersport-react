@@ -36,6 +36,32 @@ const PartnersSponsors = () => {
     const runAnimation = () => {
       if (!logosRef.current[0]) return;
 
+            gsap.fromTo(
+                logosRef.current,
+                {
+                    opacity: 0,
+                    y: 50,
+                    scale: 0.9,
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 1,
+                    stagger: {
+                        each: 0.15,
+                        from: "center",
+                    },
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 80%",
+                        end: "top 50%",
+                        toggleActions: "play none none reverse",
+                        scrub: true,
+                        markers: false,
+                    },
+                }
+            );
       gsap.fromTo(
         logosRef.current,
         {
