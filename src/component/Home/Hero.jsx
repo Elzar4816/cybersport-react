@@ -67,7 +67,7 @@ const Hero = () => {
             <Box component="span" sx={{ color: "#ac5864" }}>
               Кыргызская
             </Box>{" "}
-            Киберспортивная Федерация
+            Федерация Киберспорта
           </Typography>
 
           <Typography
