@@ -10,6 +10,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import { useNavigate } from "react-router-dom";
 
 const TournamentCard = ({ tournament }) => {
   const theme = useTheme();
@@ -20,7 +21,7 @@ const TournamentCard = ({ tournament }) => {
       ? `${game.logo_url}`
       : "/tournaments-logo/default.png";
   };
-
+  const navigate = useNavigate();
   return (
     <Card
       sx={{
@@ -131,6 +132,7 @@ const TournamentCard = ({ tournament }) => {
                   boxShadow: "0 6px 16px rgba(0, 255, 209, 0.5)",
                 },
               }}
+              onClick={() => navigate(`/tournament/${tournament.id}`)}
             >
               Регистрация
             </Button>

@@ -10,6 +10,7 @@ import PressNewsDetailPage from "../pages/PressNewsDetailPage";
 import AboutUsPage from "../pages/AboutUsPage";
 import ContactPage from "../pages/ContactPage";
 import PressTournamentsPage from "../pages/PressTournamentsPage";
+import TournamentDetailPage from "../pages/TournamentDetailPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -38,6 +39,7 @@ const MainRoutes = () => {
       ),
       id: 8,
     },
+    { link: "/gov-games/", element: <TournamentDetailPage />, id: 29 },
   ];
   return (
     <Routes>

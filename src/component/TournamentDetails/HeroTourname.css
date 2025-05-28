@@ -1,0 +1,351 @@
+.tournament-card {
+  background-color: #000;
+  color: #fff;
+  max-width: 960px;
+  margin: 40px auto;
+  border-radius: 24px;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  width: 100%;
+}
+
+.banner-section {
+  position: relative;
+}
+
+.banner-image {
+  width: 100%;
+
+  height: auto;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.pubg-logo {
+  width: 100px;
+}
+
+.prize .label {
+  font-size: 12px;
+  color: #ccc;
+}
+
+.prize .amount {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.prize .currency {
+  color: #f4d03f;
+}
+
+.info-grid {
+  display: flex;
+  justify-content: space-around;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.info-grid .value {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.info-grid .desc {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.content {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.registration-status {
+  display: inline-block;
+  background: #c8fa64;
+  color: #000;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 12px;
+  padding: 6px 14px;
+  margin-bottom: 10px;
+}
+
+.content h2 {
+  font-size: 26px;
+  font-weight: 900;
+  margin: 10px 0 20px;
+}
+
+.register-btn {
+  background: #fff;
+  color: #000;
+  border: none;
+  font-weight: bold;
+  padding: 12px 30px;
+  border-radius: 28px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.register-btn:hover {
+  background: #ddd;
+}
+
+.tournament-actions {
+  background: #000;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+.registration-status {
+  display: inline-block;
+  background: #b5ff00;
+  color: #000;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.tournament-title {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+}
+
+.register-button {
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+}
+
+.nav-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.game-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.tab {
+  padding: 8px 16px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+  min-width: 100px;
+}
+
+.tab.active {
+  border-bottom: 2px solid #b9c6c8;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  margin: 1.5rem 0 1rem;
+  font-weight: bold;
+}
+
+.participants-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.participant-card {
+  flex: 1 1 calc(33.333% - 12px);
+  max-width: 160px;
+  background-color: #222;
+  padding: 8px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.participant-card:hover {
+  transform: scale(1.05);
+}
+
+.participant-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.participant-name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.settings-panel {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 20px;
+  color: white;
+  margin-top: 20px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+}
+
+.label {
+  font-weight: 500;
+  color: #bbbbbb;
+}
+
+.value {
+  font-weight: 600;
+  color: white;
+}
+
+.settings-panel {
+  padding: 20px;
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  color: white;
+}
+
+.section-title {
+  font-size: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.label {
+  color: #ccc;
+  font-weight: 500;
+}
+
+.value {
+  font-weight: 600;
+  color: white;
+}
+
+/* Медиазапросы */
+@media (max-width: 1024px) {
+  .participant-card {
+    flex: 1 1 calc(50% - 12px);
+  }
+
+  .nav-tabs {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .tournament-card {
+    flex: 1 1 100%;
+  }
+
+  .participant-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .tab {
+    flex: none;
+    width: 100%;
+  }
+
+  .info-grid {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.howto-container {
+  color: #fff;
+  padding: 24px;
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  line-height: 1.6;
+  margin-top: 40px;
+}
+
+.howto-intro {
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+
+.howto-step {
+  margin-bottom: 32px;
+}
+
+.howto-step h3 {
+  font-size: 18px;
+  color: #ffd700;
+  margin-bottom: 10px;
+}
+
+.howto-step ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.howto-step li {
+  margin-bottom: 8px;
+  list-style-type: disc;
+}
+
+code {
+  background: #333;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-family: monospace;
+}
