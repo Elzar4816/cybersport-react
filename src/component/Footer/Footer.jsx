@@ -153,7 +153,7 @@ const Footer = () => {
           >
             <Room fontSize="small" />
             <Typography variant="body2">
-              г. Бишкек, ул. Абдрахманова, офис 42
+              Адрес: ж/м Арча-Бешик, ул. Береке 1/3, Бишкек
             </Typography>
           </Box>
         </Grid>
@@ -168,7 +168,7 @@ const Footer = () => {
             }}
           >
             <Phone fontSize="small" />
-            <Typography variant="body2">+996 312 123 456</Typography>
+            <Typography variant="body2">+996 505 055 350</Typography>
           </Box>
         </Grid>
         <Grid item xs={12} md={4}>
@@ -182,7 +182,7 @@ const Footer = () => {
             }}
           >
             <Email fontSize="small" />
-            <Typography variant="body2">info@kcf.kg</Typography>
+            <Typography variant="body2">ylaitegin.a@gmail.com</Typography>
           </Box>
         </Grid>
       </Grid>

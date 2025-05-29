@@ -187,7 +187,7 @@ const Hero = () => {
               <div>
                 <span style={labelStyle}>Текущие турниры</span>
                 <div style={counterStyle}>
-                  <NumberCounter start={0} end={3} delay="2" />
+                  <NumberCounter start={0} end={1} delay="2" />
                   <span>активных</span>
                 </div>
               </div>
@@ -203,7 +203,7 @@ const Hero = () => {
               <div>
                 <span style={labelStyle}>Завершено турниров</span>
                 <div style={numberOnlyStyle}>
-                  <NumberCounter start={0} end={12} delay="2" />
+                  <NumberCounter start={0} end={3} delay="2" />
                 </div>
               </div>
             </motion.div>

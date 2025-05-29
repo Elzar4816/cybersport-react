@@ -57,16 +57,16 @@ const Contact = () => {
           </p>
 
           <div className="social-icons">
-            <a href="#">
+            <a href="https://www.instagram.com/kcf_kg?igsh=MTNuNGdyMWZhNDEzYg==">
               <FaInstagram />
             </a>
-            <a href="#">
+            <a href="https://t.me/kyrgyz_cybersport_federation">
               <FaTelegramPlane />
             </a>
-            <a href="#">
+            <a href="https://www.tiktok.com/@kyrgyz_cybersport_fed?_t=ZS-8wl2cxV74sC&_r=1">
               <FaTiktok />
             </a>
-            <a href="#">
+            <a href="https://youtube.com/@kyrgyzcybersportfederation?si=-cCeDArW7IL8KWnL">
               <FaYoutube />
             </a>
           </div>

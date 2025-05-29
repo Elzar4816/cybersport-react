@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import { Box, Typography } from "@mui/material";
-import sponsor1 from "../../assets/sponsors/sponsor.webp";
-import sponsor2 from "../../assets/sponsors/sponsor2.jpg";
+import sponsor1 from "../../assets/sponsors/sponsor.png";
+import sponsor2 from "../../assets/sponsors/sponsor2.png";
 import sponsor3 from "../../assets/sponsors/sponsor3.png";
-import sponsor4 from "../../assets/sponsors/sponsor4.png";
+import sponsor4 from "../../assets/sponsors/sponsor4.jpg";
 import bigplay from "../../assets/sponsors/BIGPLAY_logo_vert.png";
-import cocaCola from "../../assets/sponsors/coca-cola.png";
+import actionvr from "../../assets/sponsors/actionvr.png";
 import donatovnet from "../../assets/sponsors/donatovnet.png";
 import shoro from "../../assets/sponsors/Shoro.jpg";
 import gsap from "gsap";
@@ -19,7 +19,7 @@ const partnerLogos = [
   { name: "Партнёр 3", logo: sponsor3 },
   { name: "Партнёр 4", logo: sponsor4 },
   { name: "BIGPLAY", logo: bigplay },
-  { name: "Coca-Cola", logo: cocaCola },
+  { name: "Coca-Cola", logo: actionvr },
   { name: "Donatovnet", logo: donatovnet },
   { name: "Shoro", logo: shoro },
 ];
@@ -36,32 +36,32 @@ const PartnersSponsors = () => {
     const runAnimation = () => {
       if (!logosRef.current[0]) return;
 
-            gsap.fromTo(
-                logosRef.current,
-                {
-                    opacity: 0,
-                    y: 50,
-                    scale: 0.9,
-                },
-                {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    duration: 1,
-                    stagger: {
-                        each: 0.15,
-                        from: "center",
-                    },
-                    scrollTrigger: {
-                        trigger: el,
-                        start: "top 80%",
-                        end: "top 50%",
-                        toggleActions: "play none none reverse",
-                        scrub: true,
-                        markers: false,
-                    },
-                }
-            );
+      gsap.fromTo(
+        logosRef.current,
+        {
+          opacity: 0,
+          y: 50,
+          scale: 0.9,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1,
+          stagger: {
+            each: 0.15,
+            from: "center",
+          },
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            end: "top 50%",
+            toggleActions: "play none none reverse",
+            scrub: true,
+            markers: false,
+          },
+        }
+      );
       gsap.fromTo(
         logosRef.current,
         {
