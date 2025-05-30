@@ -1,8 +1,7 @@
 import React from "react";
 import { Box, Typography, Link, Grid } from "@mui/material";
 import {
-  Facebook,
-  Twitter,
+  TikTok,
   Instagram,
   YouTube,
   Telegram,
@@ -11,7 +10,16 @@ import {
   Room,
 } from "@mui/icons-material";
 import Logo from "../../assets/logoKCF.png";
+import { FaTiktok } from "react-icons/fa";
 
+const navLinks = [
+  { label: "Главная", path: "/" },
+  { label: "Турниры", path: "/tournaments" },
+  { label: "Новости", path: "/news" },
+  { label: "Рейтинг", path: "/" },
+  { label: "О Федерации", path: "/about" },
+  { label: "Контакты", path: "/contact" },
+];
 const Footer = () => {
   return (
     <Box
@@ -80,20 +88,33 @@ const Footer = () => {
               mx: "auto",
             }}
           >
-            <Link href="#" color="inherit" aria-label="Facebook">
-              <Facebook fontSize="medium" />
-            </Link>
-            <Link href="#" color="inherit" aria-label="Twitter">
-              <Twitter fontSize="medium" />
-            </Link>
-            <Link href="#" color="inherit" aria-label="Instagram">
+            <Link
+              href="https://www.instagram.com/kcf_kg?igsh=MTNuNGdyMWZhNDEzYg=="
+              color="inherit"
+              aria-label="Instagram"
+            >
               <Instagram fontSize="medium" />
             </Link>
-            <Link href="#" color="inherit" aria-label="YouTube">
+            <Link
+              href="https://youtube.com/@kyrgyzcybersportfederation?si=-cCeDArW7IL8KWnL"
+              color="inherit"
+              aria-label="YouTube"
+            >
               <YouTube fontSize="medium" />
             </Link>
-            <Link href="#" color="inherit" aria-label="Telegram">
+            <Link
+              href="https://t.me/kyrgyz_cybersport_federation"
+              color="inherit"
+              aria-label="Telegram"
+            >
               <Telegram fontSize="medium" />
+            </Link>
+            <Link
+              href="https://www.tiktok.com/@kyrgyz_cybersport_fed?_t=ZS-8wl2cxV74sC&_r=1"
+              color="inherit"
+              aria-label="TikTok"
+            >
+              <FaTiktok />
             </Link>
           </Box>
         </Grid>
@@ -113,22 +134,15 @@ const Footer = () => {
           textAlign: "center",
         }}
       >
-        {[
-          "О федерации",
-          "Турниры",
-          "Партнеры",
-          "Пресс-центр",
-          "Проекты",
-          "Контакты",
-        ].map((text) => (
+        {navLinks.map((item) => (
           <Link
-            key={text}
-            href="#"
+            key={item.label}
+            href={item.path}
             color="inherit"
             underline="none"
             sx={{ px: 1, py: 0.5, fontSize: "1rem" }}
           >
-            {text}
+            {item.label}
           </Link>
         ))}
       </Box>
