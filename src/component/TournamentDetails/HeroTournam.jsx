@@ -36,7 +36,7 @@ const TournamentCard = () => {
             </div>
             <div className="settings-row">
               <span className="label">Формат</span>
-              <span className="value">FFA</span>
+              <span className="value">bo1</span>
             </div>
             <div className="settings-row">
               <span className="label">Место проведения</span>
@@ -349,16 +349,6 @@ const TournamentCard = () => {
       >
         <div className="banner-section">
           <img src={Banner} alt="PUBG Banner" className="banner-image" />
-          <div className="overlay">
-            <div className="top-section">
-              <div className="prize">
-                <div className="label">Призовой фонд</div>
-                <div className="amount">
-                  20000 <span className="currency">$</span>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
         <div className="info-grid">
           <div>
@@ -376,6 +366,12 @@ const TournamentCard = () => {
           <div>
             <div className="value">5×5</div>
             <div className="desc">Формат</div>
+          </div>
+          <div>
+            <div className="value">
+              20000 <span className="currency">$</span>
+            </div>
+            <div className="desc">Призовой фонд</div>
           </div>
         </div>
 
@@ -398,12 +394,7 @@ const TournamentCard = () => {
             >
               Обзор
             </button>
-            <button
-              className={`tab ${activeTab === "chat" ? "active" : ""}`}
-              onClick={() => setActiveTab("chat")}
-            >
-              Чат
-            </button>
+
             <button
               className={`tab ${activeTab === "howto" ? "active" : ""}`}
               onClick={() => setActiveTab("howto")}

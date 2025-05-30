@@ -2,6 +2,7 @@ import React from "react";
 import TournamentHero from "./TournamentHero";
 import TournamentsList from "./TournamentList";
 import FeaturedTournament from "./FeaturedTournament";
+import { MeteorAnimation } from "./MeteorAnimation";
 
 const Tournament = () => {
   return (
@@ -9,7 +10,8 @@ const Tournament = () => {
       {/* <div style={{ maxWidth: "100vw", overflowX: "hidden" }}>
         <TournamentHero />
       </div> */}
-      <div>
+      <div style={{ position: "relative" }}>
+        <MeteorAnimation />
         <FeaturedTournament />
       </div>
       <div>

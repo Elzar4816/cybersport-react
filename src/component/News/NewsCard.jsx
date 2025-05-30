@@ -68,20 +68,6 @@ const NewsCard = ({ item }) => {
             {item.content}
           </Typography>
         </CardContent>
-
-        {/* {item.videoUrl && (
-          <Box sx={{ px: 2, pb: 2, mt: "auto" }}>
-            <Link
-              href={item.videoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              underline="hover"
-              sx={{ color: "#00AEEF", fontWeight: "bold" }}
-            >
-              Смотреть на YouTube
-            </Link>
-          </Box>
-        )} */}
       </Card>
     </Link>
   );

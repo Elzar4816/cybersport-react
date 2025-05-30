@@ -60,3 +60,22 @@
 .side-menu.closed {
   transform: translateX(100%);
 }
+
+.menu-desktop a p,
+.side-menu a p {
+  transition: color 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.menu-desktop a p:hover,
+.side-menu a p:hover {
+  color: #00aeef; /* цвет текста и иконки при наведении */
+  transform: translateY(-2px);
+}
+
+.menu-desktop a p:hover svg,
+.side-menu a p:hover svg {
+  color: #00aeef; /* перекраска самой иконки (svg) */
+}

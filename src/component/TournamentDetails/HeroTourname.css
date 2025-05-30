@@ -73,7 +73,7 @@
 /* Информация о турнире (даты, формат) */
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 16px;
   background: rgba(0, 0, 0, 0.6);
   padding: 12px;

@@ -1,0 +1,36 @@
+.meteor-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.meteor {
+  position: absolute;
+  background: linear-gradient(to right, white, white, transparent);
+  border-radius: 9999px;
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+  transform: rotate(215deg);
+  opacity: 0;
+  animation-name: meteor;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes meteor {
+  0% {
+    transform: rotate(215deg) translateX(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(215deg) translateX(-500px);
+    opacity: 0;
+  }
+}

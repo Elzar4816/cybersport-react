@@ -13,7 +13,7 @@ const FederationBlock = () => {
         padding: "1.5rem 3rem",
         gap: "2rem",
         flexWrap: "wrap",
-        marginTop: "95px", // чтобы на маленьких экранах текст переходил вниз
+        marginTop: "95px",
       }}
     >
       {/* Лого слева */}

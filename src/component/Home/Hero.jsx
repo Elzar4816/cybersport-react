@@ -42,7 +42,7 @@ const Hero = () => {
               width: "100%",
               overflowX: "hidden",
               height: "500px",
-              backgroundImage: `url(${bannerImg})`,
+              backgroundImage: `linear-gradient(rgba(72, 68, 68, 0.4), rgba(61, 59, 59, 0.4)), url(${bannerImg})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
@@ -71,7 +71,7 @@ const Hero = () => {
               transition={{ duration: 1.2, delay: 0.3 }}
               style={{
                 fontSize: "17px",
-                marginTop: "16px",
+                marginTop: "19px",
                 maxWidth: "700px",
                 width: "100%",
                 wordBreak: "break-word",
@@ -94,11 +94,11 @@ const Hero = () => {
               <Button
                 variant="contained"
                 sx={{
-                  backgroundColor: "#ac5864",
+                  backgroundColor: "#364451",
                   borderRadius: "30px",
                   px: 4,
                   py: 1.5,
-                  marginTop: "20px",
+                  marginTop: "25px",
                   fontSize: "1rem",
                   fontWeight: "bold",
                   "&:hover": {
@@ -187,7 +187,7 @@ const Hero = () => {
               <div>
                 <span style={labelStyle}>Текущие турниры</span>
                 <div style={counterStyle}>
-                  <NumberCounter start={0} end={1} delay="2" />
+                  <NumberCounter start={0} end={15} delay="2" />
                   <span>активных</span>
                 </div>
               </div>
@@ -218,7 +218,7 @@ const Hero = () => {
               <div>
                 <span style={labelStyle}>Участников всего</span>
                 <div style={counterStyle}>
-                  <NumberCounter start={0} end={340} delay="2" />
+                  <NumberCounter start={2000} end={3500} delay="2" />
                   <span>+</span>
                 </div>
               </div>

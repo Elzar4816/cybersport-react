@@ -33,7 +33,7 @@ const RightNewsSidebar = () => {
     <Box sx={{ flex: 1, color: "white", px: 2 }}>
       <Typography
         variant="subtitle1"
-        sx={{ mb: 2, fontWeight: "bold", fontSize: "14px" }}
+        sx={{ mb: 2, fontWeight: "bold", fontSize: "14px", marginTop: "20px" }}
       >
         АКТУАЛЬНЫЕ НОВОСТИ
       </Typography>
