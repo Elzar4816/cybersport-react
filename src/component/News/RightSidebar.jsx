@@ -32,7 +32,12 @@ const RightSidebar = () => {
     <Box sx={{ flex: 1, color: "white", px: 2 }}>
       <Typography
         variant="subtitle1"
-        sx={{ mb: 2, fontWeight: "bold", fontSize: "14px" }}
+        sx={{
+          mb: 2,
+          fontWeight: "bold",
+          fontSize: "14px",
+          fontFamily: "Montserrat, sans-serif",
+        }}
       >
         ТУРНИРЫ ДЛЯ ВАС
       </Typography>
@@ -86,7 +91,12 @@ const RightSidebar = () => {
       {/* Видео */}
       <Typography
         variant="subtitle1"
-        sx={{ mb: 1, fontWeight: "bold", fontSize: "14px" }}
+        sx={{
+          mb: 1,
+          fontWeight: "bold",
+          fontSize: "14px",
+          fontFamily: "Montserrat, sans-serif",
+        }}
       >
         ВИДЕО
       </Typography>
@@ -124,6 +134,7 @@ const RightSidebar = () => {
           target="_blank"
           rel="noopener noreferrer"
           sx={{
+            fontFamily: "Montserrat, sans-serif",
             color: "white",
             fontWeight: "bold",
             textDecoration: "none",

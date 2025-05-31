@@ -103,7 +103,13 @@ const TournamentsList = () => {
       <Typography
         variant="h4"
         color="white"
-        sx={{ mb: 3, textAlign: "center", marginTop: "20px" }}
+        sx={{
+          mb: 3,
+          textAlign: "center",
+          marginTop: "20px",
+          fontFamily: "Montserrat, sans-serif",
+          fontWeight: "bold",
+        }}
       >
         Турниры по киберспорту
       </Typography>
@@ -131,6 +137,7 @@ const TournamentsList = () => {
             onClick={() => setGameFilter("all")}
             color={gameFilter === "all" ? "primary" : "default"}
             sx={{
+              fontFamily: "Montserrat, sans-serif",
               backgroundColor: gameFilter === "all" ? "#00AEEF" : "#2a2a30",
               color: "white",
               fontWeight: "bold",
@@ -150,6 +157,7 @@ const TournamentsList = () => {
                   selected ? <CancelIcon sx={{ color: "white" }} /> : undefined
                 }
                 sx={{
+                  fontFamily: "Montserrat, sans-serif",
                   backgroundColor: selected ? "#00AEEF" : "#2a2a30",
                   color: "white",
                   fontWeight: "bold",
@@ -166,8 +174,14 @@ const TournamentsList = () => {
         textColor="inherit"
         TabIndicatorProps={{ style: { backgroundColor: "#00AEEF" } }}
       >
-        <Tab label="Ближайшие" sx={{ color: "white" }} />
-        <Tab label="Прошедшие" sx={{ color: "white" }} />
+        <Tab
+          label="Ближайшие"
+          sx={{ color: "white", fontFamily: "Montserrat, sans-serif" }}
+        />
+        <Tab
+          label="Прошедшие"
+          sx={{ color: "white", fontFamily: "Montserrat, sans-serif" }}
+        />
       </Tabs>
 
       <Divider sx={{ borderColor: "#333", my: 2 }} />
@@ -192,14 +206,23 @@ const TournamentsList = () => {
           <Typography
             variant="h6"
             color="white"
-            sx={{ mt: 2, textAlign: "center" }}
+            sx={{
+              mt: 2,
+              textAlign: "center",
+              fontFamily: "Montserrat, sans-serif",
+            }}
           >
             Пока нет ближайших турниров
           </Typography>
           <Typography
             variant="body2"
             color="gray"
-            sx={{ mt: 1, textAlign: "center", maxWidth: 400 }}
+            sx={{
+              mt: 1,
+              textAlign: "center",
+              maxWidth: 400,
+              fontFamily: "Montserrat, sans-serif",
+            }}
           >
             Следите за нашими новостями, чтобы не пропустить свежие анонсы и
             новые турниры!
@@ -208,6 +231,7 @@ const TournamentsList = () => {
             variant="outlined"
             startIcon={<TelegramIcon />}
             sx={{
+              fontFamily: "Montserrat, sans-serif",
               mt: 3,
               color: "#00AEEF",
               borderColor: "#00AEEF",

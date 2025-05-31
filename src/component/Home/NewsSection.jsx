@@ -42,6 +42,7 @@ const NewsSection = () => {
           fontWeight: "bold",
           textAlign: "center",
           color: "#222",
+          fontFamily: "Montserrat, sans-serif",
         }}
       >
         Последние новости
@@ -62,10 +63,16 @@ const NewsSection = () => {
             margin: "0 auto",
           }}
         >
-          <Typography variant="h6" sx={{ mb: 2 }}>
+          <Typography
+            variant="h6"
+            sx={{ mb: 2, fontFamily: "Montserrat, sans-serif" }}
+          >
             Пока новостей нет
           </Typography>
-          <Typography variant="body1" sx={{ mb: 3 }}>
+          <Typography
+            variant="body1"
+            sx={{ mb: 3, fontFamily: "Montserrat, sans-serif" }}
+          >
             Загляните позже или подпишитесь на наш Telegram-канал, чтобы
             узнавать о свежих обновлениях первыми!
           </Typography>
@@ -86,6 +93,7 @@ const NewsSection = () => {
                 color: "white",
               },
               mb: 1,
+              fontFamily: "Montserrat, sans-serif",
             }}
           >
             Наш Telegram-канал
@@ -140,7 +148,11 @@ const NewsSection = () => {
                     <Typography
                       variant="caption"
                       color="text.secondary"
-                      sx={{ mb: 1, display: "block" }}
+                      sx={{
+                        mb: 1,
+                        display: "block",
+                        fontFamily: "Montserrat, sans-serif",
+                      }}
                     >
                       {new Date(item.date).toLocaleDateString()}
                     </Typography>
@@ -155,6 +167,7 @@ const NewsSection = () => {
                         WebkitLineClamp: 2,
                         WebkitBoxOrient: "vertical",
                         minHeight: "52px",
+                        fontFamily: "Montserrat, sans-serif",
                       }}
                     >
                       {item.title}
@@ -171,6 +184,7 @@ const NewsSection = () => {
                         WebkitLineClamp: 3,
                         WebkitBoxOrient: "vertical",
                         minHeight: "72px",
+                        fontFamily: "Montserrat, sans-serif",
                       }}
                     >
                       {item.content}
@@ -179,6 +193,7 @@ const NewsSection = () => {
                       variant="text"
                       size="small"
                       sx={{
+                        fontFamily: "Montserrat, sans-serif",
                         mt: 2,
                         textTransform: "none",
                         color: "#ac5864",

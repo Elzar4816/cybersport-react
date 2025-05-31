@@ -100,6 +100,7 @@ const NewsDetail = () => {
             textShadow: "0 2px 8px rgba(0,0,0,0.8)",
             width: "85%",
             fontSize: "26px",
+            fontFamily: "Montserrat, sans-serif",
           }}
         >
           {newsItem.title}
@@ -112,6 +113,7 @@ const NewsDetail = () => {
             mb: 3,
             fontStyle: "italic",
             textShadow: "0 1px 4px rgba(0,0,0,0.6)",
+            fontFamily: "Montserrat, sans-serif",
           }}
         >
           {new Date(newsItem.date).toLocaleDateString("ru-RU", {
@@ -133,6 +135,7 @@ const NewsDetail = () => {
             textShadow: "0 1px 2px rgba(0,0,0,0.5)",
             width: "85%",
             fontSize: "16px",
+            fontFamily: "Montserrat, sans-serif",
           }}
         >
           {newsItem.content}
@@ -147,6 +150,7 @@ const NewsDetail = () => {
             fontWeight: 600,
             mb: 3,
             textShadow: "0 1px 4px rgba(0,0,0,0.7)",
+            fontFamily: "Montserrat, sans-serif",
           }}
         >
           Другие новости

@@ -142,6 +142,7 @@ const PartnersSponsors = () => {
         variant="h4"
         component="h2"
         sx={{
+          fontFamily: "Montserrat, sans-serif",
           color: "white",
           mb: 4,
           fontWeight: "bold",

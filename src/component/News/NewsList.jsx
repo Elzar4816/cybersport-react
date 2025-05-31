@@ -37,7 +37,12 @@ const NewsList = () => {
     >
       {/* Блок с новостями */}
       <Box sx={{ flex: 2 }}>
-        <Typography variant="h4" color="white" gutterBottom>
+        <Typography
+          variant="h4"
+          color="white"
+          gutterBottom
+          sx={{ fontFamily: "Montserrat, sans-serif" }}
+        >
           Новости
         </Typography>
         {loading ? (
@@ -46,10 +51,19 @@ const NewsList = () => {
           </Box>
         ) : news.length === 0 ? (
           <Box sx={{ textAlign: "center", mt: 4 }}>
-            <Typography variant="h6" color="white" gutterBottom>
+            <Typography
+              variant="h6"
+              color="white"
+              gutterBottom
+              sx={{ fontFamily: "Montserrat, sans-serif" }}
+            >
               Пока новостей нет
             </Typography>
-            <Typography variant="body2" color="gray">
+            <Typography
+              variant="body2"
+              color="gray"
+              sx={{ fontFamily: "Montserrat, sans-serif" }}
+            >
               Загляните позже или подпишитесь на наш Telegram-канал, чтобы
               узнавать о свежих обновлениях первыми!
             </Typography>
@@ -63,6 +77,7 @@ const NewsList = () => {
                 )
               }
               sx={{
+                fontFamily: "Montserrat, sans-serif",
                 mt: 3,
                 color: "#00AEEF",
                 borderColor: "#00AEEF",

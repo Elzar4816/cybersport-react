@@ -28,6 +28,7 @@ const FeaturedTournament = () => {
         align="center"
         color="#fff"
         mb={4}
+        sx={{ fontFamily: "Montserrat, sans-serif" }}
       >
         Предстоящий турнир
       </Typography>
@@ -45,14 +46,23 @@ const FeaturedTournament = () => {
         <Typography
           variant="h6"
           color="white"
-          sx={{ mt: 2, textAlign: "center" }}
+          sx={{
+            mt: 2,
+            textAlign: "center",
+            fontFamily: "Montserrat, sans-serif",
+          }}
         >
           Пока нет предстоящих турниров
         </Typography>
         <Typography
           variant="body2"
           color="gray"
-          sx={{ mt: 1, textAlign: "center", maxWidth: 400 }}
+          sx={{
+            mt: 1,
+            textAlign: "center",
+            maxWidth: 400,
+            fontFamily: "Montserrat, sans-serif",
+          }}
         >
           Следите за нашими новостями, чтобы не пропустить свежие анонсы и новые
           турниры!
@@ -61,6 +71,7 @@ const FeaturedTournament = () => {
           variant="outlined"
           startIcon={<TelegramIcon />}
           sx={{
+            fontFamily: "Montserrat, sans-serif",
             mt: 3,
             color: "#00AEEF",
             borderColor: "#00AEEF",

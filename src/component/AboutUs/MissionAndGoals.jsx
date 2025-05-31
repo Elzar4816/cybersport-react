@@ -41,10 +41,10 @@ const MissionAndGoals = () => {
         gutterBottom
         sx={{
           color: "#ffb347", // теплый золотистый цвет
-
           letterSpacing: "0.1em", // межбуквенный интервал — для воздуха
           mb: 3,
-          fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+          fontFamily: "Montserrat, sans-serif",
+          fontSize: "2rem",
         }}
       >
         Миссия и цели
@@ -55,13 +55,13 @@ const MissionAndGoals = () => {
         sx={{
           maxWidth: 760,
           mx: "auto",
-          fontSize: { xs: "1rem", md: "1.15rem" },
+          fontSize: { xs: "1rem", md: "1rem" },
           mb: 6,
           lineHeight: 1.7,
           color: "#ddd",
           textShadow: "0 0 5px rgba(0, 0, 0, 0.7)",
           fontStyle: "italic",
-          fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+          fontFamily: "Montserrat, sans-serif",
           px: 2,
           userSelect: "text",
         }}
@@ -108,6 +108,8 @@ const MissionAndGoals = () => {
                 gutterBottom
                 sx={{
                   color: "#ffb74d",
+                  fontFamily: "Montserrat, sans-serif",
+                  fontSize: "1.2rem",
                 }}
               >
                 {goal.title}
@@ -115,7 +117,7 @@ const MissionAndGoals = () => {
               <Typography
                 variant="body2"
                 sx={{
-                  fontSize: "0.95rem",
+                  fontSize: "0.9rem",
                   lineHeight: 1.5,
                   color: "#ddd",
                   textShadow: "0 0 3px rgba(0, 0, 0, 0.7)",
@@ -123,6 +125,7 @@ const MissionAndGoals = () => {
 
                   mb: 1,
                   maxWidth: 400,
+                  fontFamily: "Montserrat, sans-serif",
                 }}
               >
                 {goal.description}

@@ -86,6 +86,7 @@ const Footer = () => {
               flexWrap: "wrap",
               maxWidth: { xs: 250, md: "none" },
               mx: "auto",
+              fontFamily: "Montserrat, sans-serif",
             }}
           >
             <Link
@@ -140,7 +141,12 @@ const Footer = () => {
             href={item.path}
             color="inherit"
             underline="none"
-            sx={{ px: 1, py: 0.5, fontSize: "1rem" }}
+            sx={{
+              px: 1,
+              py: 0.5,
+              fontSize: "1rem",
+              fontFamily: "Montserrat, sans-serif",
+            }}
           >
             {item.label}
           </Link>
@@ -163,10 +169,14 @@ const Footer = () => {
               alignItems: "center",
               gap: 1,
               px: 1,
+              fontFamily: "Montserrat, sans-serif",
             }}
           >
             <Room fontSize="small" />
-            <Typography variant="body2">
+            <Typography
+              variant="body2"
+              sx={{ fontFamily: "Montserrat, sans-serif" }}
+            >
               Адрес: ж/м Арча-Бешик, ул. Береке 1/3, Бишкек
             </Typography>
           </Box>
@@ -182,7 +192,12 @@ const Footer = () => {
             }}
           >
             <Phone fontSize="small" />
-            <Typography variant="body2">+996 505 055 350</Typography>
+            <Typography
+              variant="body2"
+              sx={{ fontFamily: "Montserrat, sans-serif" }}
+            >
+              +996 505 055 350
+            </Typography>
           </Box>
         </Grid>
         <Grid item xs={12} md={4}>
@@ -196,7 +211,12 @@ const Footer = () => {
             }}
           >
             <Email fontSize="small" />
-            <Typography variant="body2">ylaitegin.a@gmail.com</Typography>
+            <Typography
+              variant="body2"
+              sx={{ fontFamily: "Montserrat, sans-serif" }}
+            >
+              ylaitegin.a@gmail.com
+            </Typography>
           </Box>
         </Grid>
       </Grid>
@@ -209,6 +229,7 @@ const Footer = () => {
           fontSize: "0.875rem",
           color: "#aaa",
           px: 1,
+          fontFamily: "Montserrat, sans-serif",
         }}
       >
         © {new Date().getFullYear()} Kyrgyz Cybersport Federation

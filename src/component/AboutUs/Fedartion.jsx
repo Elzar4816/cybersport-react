@@ -33,9 +33,10 @@ const FederationBlock = () => {
       <Typography
         variant="body1"
         sx={{
+          fontFamily: "Montserrat, sans-serif",
           color: "white",
           maxWidth: 600,
-          fontSize: "1.1rem",
+          fontSize: "1rem",
           lineHeight: 1.5,
         }}
       >

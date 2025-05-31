@@ -70,7 +70,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.3 }}
               style={{
-                fontSize: "17px",
+                fontSize: "16px",
                 marginTop: "19px",
                 maxWidth: "700px",
                 width: "100%",
@@ -141,6 +141,7 @@ const Hero = () => {
             <Typography
               variant="h3"
               sx={{
+                fontFamily: "Montserrat, sans-serif",
                 fontWeight: "bold",
                 mb: 2,
                 animation: "fadeIn 1s ease forwards",
@@ -157,6 +158,7 @@ const Hero = () => {
               sx={{
                 mb: 4,
                 animation: "fadeIn 1s ease forwards",
+                fontFamily: "Montserrat, sans-serif",
               }}
             >
               Киберспортивные турниры — одно из приоритетных направлений{" "}
@@ -249,6 +251,7 @@ const iconStyle = {
 
 const labelStyle = {
   fontSize: "clamp(12px, 1.2vw, 14px)",
+  fontFamily: "Montserrat, sans-serif",
 };
 
 const counterStyle = {

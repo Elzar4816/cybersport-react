@@ -66,6 +66,7 @@ const UpcomingTournaments = () => {
             mb: 4,
             fontWeight: "bold",
             textAlign: "center",
+            fontFamily: "Montserrat, sans-serif",
           }}
         >
           Ближайшие турниры
@@ -111,6 +112,7 @@ const UpcomingTournaments = () => {
                   fontSize: isMobile ? "18px" : "16px",
                   minWidth: 180,
                   textAlign: isMobile ? "center" : "left",
+                  fontFamily: "Montserrat, sans-serif",
                 }}
               >
                 {t.title}
@@ -123,9 +125,16 @@ const UpcomingTournaments = () => {
                   flexDirection: isMobile ? "column" : "row",
                   gap: 2,
                   alignItems: "center",
+                  fontFamily: "Montserrat, sans-serif",
                 }}
               >
-                <Box sx={{ textAlign: "center", minWidth: 100 }}>
+                <Box
+                  sx={{
+                    textAlign: "center",
+                    minWidth: 100,
+                    fontFamily: "Montserrat, sans-serif",
+                  }}
+                >
                   <Typography variant="caption" color="gray">
                     🏆 Приз
                   </Typography>
@@ -133,7 +142,13 @@ const UpcomingTournaments = () => {
                     {t.prize_pool ? `${t.prize_pool} сом` : "не указан"}
                   </Typography>
                 </Box>
-                <Box sx={{ textAlign: "center", minWidth: 120 }}>
+                <Box
+                  sx={{
+                    textAlign: "center",
+                    minWidth: 120,
+                    fontFamily: "Montserrat, sans-serif",
+                  }}
+                >
                   <Typography variant="caption" color="gray">
                     📅 Дата
                   </Typography>
@@ -141,11 +156,22 @@ const UpcomingTournaments = () => {
                     {formatDateRange(t.start_date, t.end_date)}
                   </Typography>
                 </Box>
-                <Box sx={{ textAlign: "center", minWidth: 120 }}>
+                <Box
+                  sx={{
+                    textAlign: "center",
+                    minWidth: 120,
+                    fontFamily: "Montserrat, sans-serif",
+                  }}
+                >
                   <Typography variant="caption" color="gray">
                     🧩 Игра
                   </Typography>
-                  <Typography sx={{ fontWeight: "bold" }}>
+                  <Typography
+                    sx={{
+                      fontWeight: "bold",
+                      fontFamily: "Montserrat, sans-serif",
+                    }}
+                  >
                     {t.game?.name || "Не указано"}
                   </Typography>
                 </Box>
@@ -155,6 +181,7 @@ const UpcomingTournaments = () => {
               <Button
                 variant="contained"
                 sx={{
+                  fontFamily: "Montserrat, sans-serif",
                   mt: isMobile ? 2 : 0,
                   backgroundColor: idx === 0 ? "#ff2845" : "#616161",
                   textTransform: "none",
@@ -184,14 +211,23 @@ const UpcomingTournaments = () => {
             <Typography
               variant="h6"
               color="white"
-              sx={{ mt: 2, textAlign: "center" }}
+              sx={{
+                mt: 2,
+                textAlign: "center",
+                fontFamily: "Montserrat, sans-serif",
+              }}
             >
               Пока нет ближайших турниров
             </Typography>
             <Typography
               variant="body2"
               color="gray"
-              sx={{ mt: 1, textAlign: "center", maxWidth: 400 }}
+              sx={{
+                mt: 1,
+                textAlign: "center",
+                maxWidth: 400,
+                fontFamily: "Montserrat, sans-serif",
+              }}
             >
               Следите за нашими новостями, чтобы не пропустить свежие анонсы и
               новые турниры!
@@ -200,6 +236,7 @@ const UpcomingTournaments = () => {
               variant="outlined"
               startIcon={<TelegramIcon />}
               sx={{
+                fontFamily: "Montserrat, sans-serif",
                 mt: 3,
                 color: "#00AEEF",
                 borderColor: "#00AEEF",
