@@ -1,31 +1,10 @@
 import React from "react";
-import { Box, Button, Paper, Typography, useMediaQuery } from "@mui/material";
-import Goverment from "../../assets/gov_banner.png";
+import { Box, Button, Typography, useMediaQuery } from "@mui/material";
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import TelegramIcon from "@mui/icons-material/Telegram";
 import bgImage from "../../assets/Dark.png";
-import { useTheme } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
 const FeaturedTournament = () => {
   const isMobile = useMediaQuery("(max-width:768px)");
-  const theme = useTheme();
-  const tournament = {
-    title: "Gov.Games — Кибертурнир между госорганами",
-    games: ["Dota 2", "Counter-Strike 2"],
-    prize_pool: "$20,000",
-    registration_period: "26 мая — 2 июня",
-    online_start: "3 июня",
-    final_date: "14 июня",
-    location: "Бишкек, IT-хаб TechnoPark",
-    stream_link: "https://www.youtube.com/channel/your-channel-id",
-    img: Goverment,
-    description:
-      "Сотрудники IT-отделов министерств и ведомств будут соревноваться в Dota 2 и Counter-Strike 2. Призовой фонд — 20 тысяч долларов, победители получат гаджеты, технику и другие ценные призы.",
-  };
-
-  const navigate = useNavigate();
-
-  const handleRegistrationClick = () => {
-    navigate("/gov-games", { state: { tournament } });
-  };
 
   return (
     <Box
@@ -53,119 +32,52 @@ const FeaturedTournament = () => {
         Предстоящий турнир
       </Typography>
 
-      <Paper
-        elevation={6}
+      <Box
         sx={{
-          maxWidth: 900,
-          width: "100%",
-          borderRadius: 4,
-          overflow: "hidden",
-          backgroundColor: "#1c1c1c",
-          color: "white",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          py: 6,
         }}
       >
-        <Box
-          component="img"
-          src={tournament.img}
-          alt={tournament.title}
+        <SportsEsportsIcon sx={{ fontSize: 80, color: "#555" }} />
+        <Typography
+          variant="h6"
+          color="white"
+          sx={{ mt: 2, textAlign: "center" }}
+        >
+          Пока нет предстоящих турниров
+        </Typography>
+        <Typography
+          variant="body2"
+          color="gray"
+          sx={{ mt: 1, textAlign: "center", maxWidth: 400 }}
+        >
+          Следите за нашими новостями, чтобы не пропустить свежие анонсы и новые
+          турниры!
+        </Typography>
+        <Button
+          variant="outlined"
+          startIcon={<TelegramIcon />}
           sx={{
-            width: "100%",
-            height: isMobile ? 200 : 400,
-            objectFit: "cover",
+            mt: 3,
+            color: "#00AEEF",
+            borderColor: "#00AEEF",
+            textTransform: "none",
+            borderRadius: "12px",
+            "&:hover": {
+              backgroundColor: "#00AEEF",
+              color: "white",
+            },
           }}
-        />
-        <Box sx={{ p: isMobile ? 3 : 5 }}>
-          <Typography
-            variant={isMobile ? "h5" : "h4"}
-            fontWeight="bold"
-            mb={2}
-            align="center"
-          >
-            {tournament.title}
-          </Typography>
-
-          {/* Даты в одном ряду */}
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: isMobile ? "column" : "row",
-              justifyContent: "center",
-              alignItems: isMobile ? "flex-start" : "center",
-              textAlign: isMobile ? "left" : "center",
-              gap: 2,
-              mb: 2,
-            }}
-          >
-            <Box>
-              <Typography variant="subtitle2" color="gray">
-                Регистрация
-              </Typography>
-              <Typography fontWeight="bold">
-                {tournament.registration_period}
-              </Typography>
-            </Box>
-
-            <Box>
-              <Typography variant="subtitle2" color="gray">
-                Онлайн-этап
-              </Typography>
-              <Typography fontWeight="bold">
-                {tournament.online_start}
-              </Typography>
-            </Box>
-
-            <Box>
-              <Typography variant="subtitle2" color="gray">
-                Финал
-              </Typography>
-              <Typography fontWeight="bold">{tournament.final_date}</Typography>
-            </Box>
-          </Box>
-
-          {/* Призовой фонд */}
-          <Box
-            sx={{
-              mb: 3,
-              //   display: "flex",
-              //   justifyContent: "center",
-              //   alignItems: "center",
-              //   flexDirection: "column",
-              textAlign: isMobile ? "left" : "center",
-            }}
-          >
-            <Typography variant="subtitle2" color="gray">
-              Призовой фонд
-            </Typography>
-            <Typography fontWeight="bold">{tournament.prize_pool}</Typography>
-          </Box>
-
-          {/* Кнопка */}
-          <Box sx={{ textAlign: "center" }}>
-            <Button
-              onClick={handleRegistrationClick}
-              variant="contained"
-              sx={{
-                background: "linear-gradient(90deg, #00AEEF 0%, #00FFD1 100%)",
-                color: "#000",
-                textTransform: "none",
-                fontWeight: "bold",
-                px: 4,
-                py: 1.5,
-                borderRadius: 2,
-                boxShadow: "0 4px 12px rgba(0, 174, 239, 0.4)",
-                transition: "all 0.3s ease-in-out",
-                "&:hover": {
-                  background:
-                    "linear-gradient(90deg, #00FFD1 0%, #00AEEF 100%)",
-                  boxShadow: "0 6px 16px rgba(0, 255, 209, 0.5)",
-                },
-              }}
-            >
-              Регистрация
-            </Button>
-          </Box>
-        </Box>
-      </Paper>
+          onClick={() =>
+            window.open("https://t.me/kyrgyz_cybersport_federation", "_blank")
+          }
+        >
+          Наш Telegram-канал
+        </Button>
+      </Box>
     </Box>
   );
 };

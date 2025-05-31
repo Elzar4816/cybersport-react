@@ -42,7 +42,7 @@ const Hero = () => {
               width: "100%",
               overflowX: "hidden",
               height: "500px",
-              backgroundImage: `linear-gradient(rgba(72, 68, 68, 0.4), rgba(61, 59, 59, 0.4)), url(${bannerImg})`,
+              backgroundImage: `linear-gradient(rgba(44, 41, 41, 0.4), rgba(30, 28, 28, 0.4)), url(${bannerImg})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
