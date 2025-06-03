@@ -23,7 +23,7 @@ const NewsSection = () => {
     axios
       .get("/api/news")
       .then((res) => {
-        setNews(res.data.slice(0, 3)); // берём только первые 3 новости
+        setNews(res.data.slice(0, 3));
       })
       .catch((err) => {
         console.error("Ошибка при загрузке новостей", err);
@@ -43,6 +43,11 @@ const NewsSection = () => {
           textAlign: "center",
           color: "#222",
           fontFamily: "Montserrat, sans-serif",
+          fontSize: {
+            xs: "1.5rem", // ~24px
+            sm: "2rem", // ~32px
+            md: "2.5rem", // ~40px
+          },
         }}
       >
         Последние новости
@@ -57,21 +62,38 @@ const NewsSection = () => {
           sx={{
             textAlign: "center",
             mt: 4,
-            width: "50%",
+            width: { xs: "90%", sm: "70%", md: "50%" },
             border: "1px solid #596670",
             borderRadius: "20px",
             margin: "0 auto",
+            p: 3,
+            backgroundColor: "#fff",
           }}
         >
           <Typography
             variant="h6"
-            sx={{ mb: 2, fontFamily: "Montserrat, sans-serif" }}
+            sx={{
+              mb: 2,
+              fontFamily: "Montserrat, sans-serif",
+              fontSize: {
+                xs: "1rem",
+                sm: "1.125rem",
+                md: "1.25rem",
+              },
+            }}
           >
             Пока новостей нет
           </Typography>
           <Typography
             variant="body1"
-            sx={{ mb: 3, fontFamily: "Montserrat, sans-serif" }}
+            sx={{
+              mb: 3,
+              fontFamily: "Montserrat, sans-serif",
+              fontSize: {
+                xs: "0.875rem",
+                sm: "1rem",
+              },
+            }}
           >
             Загляните позже или подпишитесь на наш Telegram-канал, чтобы
             узнавать о свежих обновлениях первыми!
@@ -88,12 +110,16 @@ const NewsSection = () => {
               borderColor: "#00AEEF",
               textTransform: "none",
               borderRadius: "12px",
+              fontFamily: "Montserrat, sans-serif",
+              fontSize: {
+                xs: "0.8rem",
+                sm: "0.9rem",
+              },
               "&:hover": {
                 backgroundColor: "#00AEEF",
                 color: "white",
               },
               mb: 1,
-              fontFamily: "Montserrat, sans-serif",
             }}
           >
             Наш Telegram-канал
@@ -121,7 +147,7 @@ const NewsSection = () => {
               >
                 <Card
                   sx={{
-                    width: 320,
+                    width: { xs: 280, sm: 300, md: 320 },
                     borderRadius: 4,
                     boxShadow:
                       "0 8px 30px rgba(0,0,0,0.08), 0 0 1px rgba(0,0,0,0.02)",
@@ -135,7 +161,7 @@ const NewsSection = () => {
                 >
                   <CardMedia
                     component="img"
-                    height="180"
+                    height="220"
                     image={item.imageUrl}
                     alt={item.title}
                     sx={{
@@ -152,6 +178,10 @@ const NewsSection = () => {
                         mb: 1,
                         display: "block",
                         fontFamily: "Montserrat, sans-serif",
+                        fontSize: {
+                          xs: "0.7rem",
+                          sm: "0.75rem",
+                        },
                       }}
                     >
                       {new Date(item.date).toLocaleDateString()}
@@ -168,6 +198,10 @@ const NewsSection = () => {
                         WebkitBoxOrient: "vertical",
                         minHeight: "52px",
                         fontFamily: "Montserrat, sans-serif",
+                        fontSize: {
+                          xs: "1rem",
+                          sm: "1.1rem",
+                        },
                       }}
                     >
                       {item.title}
@@ -185,6 +219,10 @@ const NewsSection = () => {
                         WebkitBoxOrient: "vertical",
                         minHeight: "72px",
                         fontFamily: "Montserrat, sans-serif",
+                        fontSize: {
+                          xs: "0.85rem",
+                          sm: "0.95rem",
+                        },
                       }}
                     >
                       {item.content}
@@ -198,6 +236,10 @@ const NewsSection = () => {
                         textTransform: "none",
                         color: "#ac5864",
                         fontWeight: 500,
+                        fontSize: {
+                          xs: "0.85rem",
+                          sm: "0.95rem",
+                        },
                         "&:hover": {
                           color: "#922f3d",
                         },

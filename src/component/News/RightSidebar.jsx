@@ -43,47 +43,58 @@ const RightSidebar = () => {
       </Typography>
 
       <Box sx={{ maxHeight: 300, overflowY: "auto", mb: 4 }}>
-        {upcomingTournaments.map((tournament) => (
-          <Card
-            key={tournament.id}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              backgroundColor: "#2c2c2c",
-              mb: 1,
-              p: 1,
-              color: "white",
-            }}
+        {upcomingTournaments.length === 0 ? (
+          <Typography
+            variant="body2"
+            sx={{ color: "#aaa", textAlign: "center", mt: 2 }}
           >
-            <CardMedia
-              component="img"
-              image={getLogoSrc(tournament.game)}
-              alt={tournament.game?.name || "Game"}
+            Нет доступных турниров на данный момент.
+          </Typography>
+        ) : (
+          upcomingTournaments.map((tournament) => (
+            <Card
+              key={tournament.id}
               sx={{
-                width: 50,
-                height: 50,
-                borderRadius: 1,
-                mr: 2,
-                objectFit: "contain",
-                backgroundColor: "#1c1c1c",
+                display: "flex",
+                alignItems: "center",
+                backgroundColor: "#2c2c2c",
+                mb: 1,
+                p: 1,
+                color: "white",
               }}
-            />
-            <CardContent sx={{ p: 0 }}>
-              <Typography variant="body2" sx={{ fontWeight: "bold" }} noWrap>
-                {tournament.title}
-              </Typography>
-              <Typography variant="caption" sx={{ color: "#aaa" }}>
-                {formatDate(tournament.start_date)}{" "}
-                <Box
-                  component="span"
-                  sx={{ color: "#FFD700", fontWeight: "bold" }}
-                >
-                  {tournament.prize_pool ? `${tournament.prize_pool} сом` : "—"}
-                </Box>
-              </Typography>
-            </CardContent>
-          </Card>
-        ))}
+            >
+              <CardMedia
+                component="img"
+                image={getLogoSrc(tournament.game)}
+                alt={tournament.game?.name || "Game"}
+                sx={{
+                  width: 50,
+                  height: 50,
+                  borderRadius: 1,
+                  mr: 2,
+                  objectFit: "contain",
+                  backgroundColor: "#1c1c1c",
+                }}
+              />
+              <CardContent sx={{ p: 0 }}>
+                <Typography variant="body2" sx={{ fontWeight: "bold" }} noWrap>
+                  {tournament.title}
+                </Typography>
+                <Typography variant="caption" sx={{ color: "#aaa" }}>
+                  {formatDate(tournament.start_date)}{" "}
+                  <Box
+                    component="span"
+                    sx={{ color: "#FFD700", fontWeight: "bold" }}
+                  >
+                    {tournament.prize_pool
+                      ? `${tournament.prize_pool} сом`
+                      : "—"}
+                  </Box>
+                </Typography>
+              </CardContent>
+            </Card>
+          ))
+        )}
       </Box>
 
       <Divider sx={{ borderColor: "#444", mb: 2 }} />

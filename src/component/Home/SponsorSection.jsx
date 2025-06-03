@@ -4,7 +4,7 @@ import sponsor1 from "../../assets/sponsors/sponsor.png";
 import sponsor2 from "../../assets/sponsors/sponsor2.png";
 import sponsor3 from "../../assets/sponsors/sponsor3.png";
 import sponsor4 from "../../assets/sponsors/sponsor4.jpg";
-import bigplay from "../../assets/sponsors/BIGPLAY_logo_vert.png";
+import bigplay from "../../assets/sponsors/BigPlay_allmode.png";
 import actionvr from "../../assets/sponsors/actionvr.png";
 import donatovnet from "../../assets/sponsors/donatovnet.png";
 import shoro from "../../assets/sponsors/Shoro.jpg";
@@ -152,35 +152,16 @@ const PartnersSponsors = () => {
         Наши партнёры и спонсоры
       </Typography>
 
-      {/* <div style={{ width: "80%", color: "white" }}>
-        <div>
-          <p>OUR VALUED</p>
-          <h3>Pack Partners</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-            temporibus ratione suscipit tempore ea nostrum expedita excepturi,
-            neque numquam veritatis.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique,
-            vel.
-          </p>
-          <button>Lorem, ipsum. </button>
-        </div>
-        <div>
-          {partnerLogos.map(({ name, logo }, idx) => (
-p     
-          ))}
-        </div>
-      </div> */}
-
       <Box
         sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          gap: 4,
-          overflow: "hidden",
+          display: "grid",
+          gridTemplateColumns: {
+            xs: "repeat(2, 1fr)", // 2 логотипа на мобильных
+            sm: "repeat(2, 1fr)", // 2 логотипа на планшетах
+            md: "repeat(3, 1fr)", // 3 логотипа на десктопах
+          },
+          gap: 2,
+          justifyItems: "center", // Центрирует логотипы по центру
         }}
       >
         {partnerLogos.map(({ name, logo }, idx) => (
@@ -192,10 +173,11 @@ p
             alt={name}
             title={name}
             sx={{
-              height: { xs: 80, sm: 100, md: 120 },
-              overflow: "hidden",
-              flexShrink: 0,
-              filter: "grayscale(100%)",
+              maxWidth: "140px",
+              width: "100%",
+              height: "auto",
+              objectFit: "contain",
+              filter: "grayscale(50%)",
               transition: "filter 0.3s ease",
               cursor: "pointer",
               "&:hover": {
