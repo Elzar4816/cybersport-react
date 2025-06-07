@@ -62,7 +62,7 @@ const NewsSection = () => {
           sx={{
             textAlign: "center",
             mt: 4,
-            width: { xs: "90%", sm: "70%", md: "50%" },
+            width: { xs: "83%", sm: "70%", md: "50%" },
             border: "1px solid #596670",
             borderRadius: "20px",
             margin: "0 auto",

@@ -5,7 +5,7 @@ import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import GroupIcon from "@mui/icons-material/Group";
 import { motion } from "framer-motion";
 import NumberCounter from "number-counter";
-import bannerImg from "../../assets/banner.png";
+import bannerImg from "../../assets/banner1.PNG";
 import { useNavigate } from "react-router-dom";
 
 const transition = { type: "spring", duration: 3 };
@@ -31,7 +31,7 @@ const Hero = () => {
               justifyContent: "center",
               alignItems: "center",
               boxShadow: "inset 7px 0 9px -7px rgba(0,0,0,.5)",
-              marginTop: "104px",
+              marginTop: "93px",
             }}
           >
             Кыргызская Федерация Киберспорта
