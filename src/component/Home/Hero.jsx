@@ -31,7 +31,7 @@ const Hero = () => {
               justifyContent: "center",
               alignItems: "center",
               boxShadow: "inset 7px 0 9px -7px rgba(0,0,0,.5)",
-              marginTop: "93px",
+              marginTop: "97px",
             }}
           >
             Кыргызская Федерация Киберспорта

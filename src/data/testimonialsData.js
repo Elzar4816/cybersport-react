@@ -1,7 +1,7 @@
 import image3 from "../assets/organization/prezident1.jpg";
 import image2 from "../assets/organization/secretar.jpg";
 import image1 from "../assets/organization/president.jpg";
-
+import image4 from "../assets/organization/strateg.jpg";
 export const testimonialsData = [
   {
     image: image1,
@@ -23,5 +23,12 @@ export const testimonialsData = [
       "Курирует развитие игровых дисциплин, организует тренировки и взаимодействие между игроками и тренерами.",
     name: "Мамасадык уулу Майрамбек",
     status: "Координатор по компьютерным играм",
+  },
+  {
+    image: image4,
+    review:
+      "Занимается разработкой, интеграцией цифровых и интернет проектов внутри и вне федерации. Отвечает за весь цифровой отдел Кыргызской Федерации Киберспорта.",
+    name: "Атай Токтосунов Алинурович",
+    status: "Менеджер по цифровому развитию и аналитике ",
   },
 ];
